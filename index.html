@@ -2,24 +2,217 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health for Eternity</title>
+    <meta name="description" content="Health for Eternity: Promoting wholistic health, wellness, and lifestyle tips.">
+    <link rel="icon" href="logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* =====================
+           Reset & Base Styles
+        ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =====================
+           Header / Navigation
+        ===================== */
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header img.logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        /* =====================
+           Banner
+        ===================== */
+        .banner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .banner img {
+            width: 100%;
+            display: block;
+        }
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .banner-text h1 {
+            font-size: 2.5rem;
+        }
+        .banner-text p {
+            font-size: 1.2rem;
+        }
+
+        /* =====================
+           Main Content
+        ===================== */
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            color: #1e90ff;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        p {
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+
+        /* =====================
+           Footer
+        ===================== */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer a {
+            color: #1e90ff;
+        }
+
+        /* =====================
+           Responsive
+        ===================== */
+        @media(max-width:768px){
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .banner-text h1 {
+                font-size: 2rem;
+            }
+            .banner-text p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- HEADER: Logo + Navigation -->
+    <!-- ===== Header ===== -->
     <header>
         <img src="logo.svg" alt="Health for Eternity Logo" class="logo">
         <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="principles.html">Health Principles</a>
-            <a href="quotes.html">Quotes</a>
-            <a href="articles/fasting.html">Articles</a>
-            <a href="contact.html">Contact</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
-        <div style="clear:both;"></div>
     </header>
 
-    <!-- HERO SECTION: Banner + Text + Button
+    <!-- ===== Banner ===== -->
+    <div class="banner">
+        <img src="banner.png" alt="Health for Eternity Banner">
+        <div class="banner-text">
+            <h1>Welcome to Health for Eternity</h1>
+            <p>Your journey to wholistic health and wellness starts here.</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
+    </div>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Health for Eternity is dedicated to helping you achieve optimal health through a wholistic approach. We focus on lifestyle management, preventive healthcare, and scientifically-backed wellness strategies that promote long-term well-being.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Our Services</h2>
+            <p>We offer health guides, lifestyle advice, wellness programs, and educational content to empower you to live a healthier life. Our mission is to guide you in achieving balance, energy, and longevity.</p>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <h2>Latest Articles</h2>
+            <p>Explore our health tips, fasting guides, and nutrition advice to help you make informed decisions and stay healthy every day.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions or suggestions? Reach out to us at <a href="mailto:info@healthforeternity.com">info@healthforeternity.com</a>.</p>
+        </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <p>&copy; 2026 Health for Eternity | Designed with ❤️</p>
+        <p>Follow us on 
+            <a href="#">Facebook</a> | 
+            <a href="#">Twitter</a> | 
+            <a href="#">Instagram</a>
+        </p>
+    </footer>
+
+</body>
+</html>
