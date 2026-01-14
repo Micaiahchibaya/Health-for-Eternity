@@ -5,56 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health for Eternity</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- HEADER SECTION -->
-    <header>
-        <img src="logo.svg" alt="Health for Eternity Logo" class="logo">
-        <img src="banner.png" alt="Health Banner" class="banner">
-    </header>
-
     <!-- NAVIGATION -->
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About</a> |
-        <a href="principles.html">Health Principles</a> |
-        <a href="quotes.html">Quotes</a> |
-        <a href="articles/fasting.html">Articles</a> |
-        <a href="contact.html">Contact</a>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="logo.svg" alt="Health for Eternity Logo" class="logo">
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="principles.html">Health Principles</a>
+            <a href="quotes.html">Quotes</a>
+            <a href="articles/fasting.html">Articles</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
 
-    <hr>
+    <!-- HERO BANNER -->
+    <section class="hero">
+        <img src="banner.png" alt="Health Banner" class="hero-banner">
+        <div class="hero-text">
+            <h1>Welcome to Health for Eternity</h1>
+            <p>Restoring health. Preserving life. Preparing for eternity.</p>
+            <a href="articles/fasting.html" class="btn">Read Articles</a>
+        </div>
+    </section>
 
     <!-- MAIN CONTENT -->
     <main>
-        <h1>Welcome to Health for Eternity</h1>
-        <p><em>Restoring health. Preserving life. Preparing for eternity.</em></p>
+        <section class="mission">
+            <h2>Our Mission</h2>
+            <p>
+                Health for Eternity is a preventive health ministry promoting wholistic living through lifestyle medicine, education, and faith-based principles.
+            </p>
+        </section>
 
-        <h2>Our Mission</h2>
-        <p>
-            Health for Eternity is a preventive health ministry dedicated to promoting 
-            wholistic living through lifestyle medicine, education, and faith-based principles.
-        </p>
+        <section class="teach">
+            <h2>What We Teach</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Nutrition</h3>
+                    <p>Learn about natural foods and healthy eating habits.</p>
+                </div>
+                <div class="card">
+                    <h3>Rest & Sleep</h3>
+                    <p>Discover the importance of sleep and daily rest for health.</p>
+                </div>
+                <div class="card">
+                    <h3>Exercise</h3>
+                    <p>Simple and effective exercises for body and mind.</p>
+                </div>
+                <div class="card">
+                    <h3>Mental Balance</h3>
+                    <p>Techniques to maintain emotional and mental wellbeing.</p>
+                </div>
+                <div class="card">
+                    <h3>Faith & Trust</h3>
+                    <p>Spiritual health as a foundation for holistic wellbeing.</p>
+                </div>
+            </div>
+        </section>
 
-        <h2>What We Teach</h2>
-        <ul>
-            <li>Nutrition & natural foods</li>
-            <li>Rest, sleep, and circadian health</li>
-            <li>Physical activity</li>
-            <li>Mental and emotional balance</li>
-            <li>Trust in God</li>
-        </ul>
-
-        <h2>Quick Links</h2>
-        <ul>
-            <li><a href="quotes.html">Ellen G. White Health Quotes</a></li>
-            <li><a href="articles/fasting.html">Health Articles & Fasting Series</a></li>
-        </ul>
+        <section class="quotes-preview">
+            <h2>Health Quotes</h2>
+            <blockquote>
+                "Pure air, sunlight, abstemiousness, rest, exercise, proper diet, the use of water, trust in divine power — these are the true remedies." <br><em>The Ministry of Healing, p. 127</em>
+            </blockquote>
+            <a href="quotes.html" class="btn">See More Quotes</a>
+        </section>
     </main>
 
     <!-- FOOTER -->
-    <hr>
     <footer>
         <p>© 2026 Health for Eternity | Email: healthforeternity@gmail.com</p>
     </footer>
