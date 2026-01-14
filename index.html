@@ -1,72 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Health for Eternity</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health for Eternity</title>
+  <meta name="description" content="Health for Eternity: Promoting wholistic health, wellness, and lifestyle tips.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HEADER: Logo + Navigation -->
-    <header>
-        <img src="logo.svg" alt="Health for Eternity Logo" class="logo">
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="principles.html">Health Principles</a>
-            <a href="quotes.html">Quotes</a>
-            <a href="articles/fasting.html">Articles</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-        <div style="clear:both;"></div>
-    </header>
-
-    <!-- HERO SECTION: Banner + Text + Button -->
-    <div class="hero-container">
-        <img src="banner.png" alt="Health Banner" class="banner">
-        <div class="hero-text">
-            <h1>Welcome to Health for Eternity</h1>
-            <p>Restoring health. Preserving life. Preparing for eternity.</p>
-            <a href="articles/fasting.html" class="btn">Read Articles</a>
-        </div>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="logo.svg" alt="Health for Eternity Logo" class="logo">
     </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
 
-    <!-- MISSION SECTION -->
-    <section class="card card-green">
-        <h2>Our Mission</h2>
-        <p>
-            Health for Eternity is a preventive health ministry promoting wholistic living through lifestyle medicine,
-            education, and faith-based principles.
-        </p>
+  <!-- Banner -->
+  <section class="banner">
+    <img src="banner.png" alt="Health for Eternity Banner">
+    <div class="banner-text">
+      <h1>Welcome to Health for Eternity</h1>
+      <p>Your journey to wholistic health and wellness starts here.</p>
+      <a href="#about" class="btn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main>
+    <!-- About Section -->
+    <section id="about" class="reveal">
+      <h2>About Us</h2>
+      <p>Health for Eternity is dedicated to helping you achieve optimal health through a wholistic approach. We focus on lifestyle management, preventive healthcare, and scientifically-backed wellness strategies that promote long-term well-being.</p>
     </section>
 
-    <!-- TEACHINGS SECTION -->
-    <section class="card card-orange">
-        <h2>What We Teach</h2>
-        <ul>
-            <li>Nutrition & natural foods</li>
-            <li>Rest, sleep, and circadian health</li>
-            <li>Physical activity</li>
-            <li>Mental and emotional balance</li>
-            <li>Trust in God</li>
-        </ul>
-        <a href="articles/fasting.html" class="btn">Explore Articles</a>
-        <a href="contact.html" class="btn">Get in Touch</a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Health for Eternity | Email: healthforeternity@gmail.com</p>
-        <div class="social-icons">
-            <!-- Add your JPG social media icons -->
-            <!-- Example placeholders -->
-            <!-- <a href="#"><img src="facebook.jpg" alt="Facebook"></a> -->
-            <!-- <a href="#"><img src="instagram.jpg" alt="Instagram"></a> -->
-            <!-- <a href="#"><img src="whatsapp.jpg" alt="WhatsApp"></a> -->
-            <!-- <a href="#"><img src="youtube.jpg" alt="YouTube"></a> -->
+    <!-- Services Section -->
+    <section id="services" class="reveal">
+      <h2>Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Health Guides</h3>
+          <p>Step-by-step guides to achieve balanced nutrition and wellness.</p>
         </div>
-    </footer>
+        <div class="card">
+          <h3>Wellness Programs</h3>
+          <p>Customized programs to improve lifestyle and long-term health.</p>
+        </div>
+        <div class="card">
+          <h3>Fasting & Detox</h3>
+          <p>Safe and effective fasting strategies for body and mind reset.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="reveal">
+      <h2>Latest Articles</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Nutrition Tips</h3>
+          <p>Learn what foods improve energy, immunity, and longevity.</p>
+        </div>
+        <div class="card">
+          <h3>Fasting Benefits</h3>
+          <p>How intermittent fasting can reset your body and mind.</p>
+        </div>
+        <div class="card">
+          <h3>Preventive Health</h3>
+          <p>Practical steps to prevent common lifestyle diseases.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="reveal">
+      <h2>Contact Us</h2>
+      <p>Have questions or suggestions? Reach out to us at <a href="mailto:info@healthforeternity.com">info@healthforeternity.com</a>.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Health for Eternity | Designed with ❤️</p>
+    <p>Follow us on 
+      <a href="#">Facebook</a> | 
+      <a href="#">Twitter</a> | 
+      <a href="#">Instagram</a>
+    </p>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      reveals.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        const height = window.innerHeight;
+        if(top < height - 100) section.classList.add('active');
+      });
+    });
+
+    // Burger menu toggle
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('nav ul');
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('nav-active');
+      burger.classList.toggle('toggle');
+    });
+  </script>
 
 </body>
 </html>
