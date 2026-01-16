@@ -61,11 +61,13 @@ body {
   transition: width 0.3s;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
   color: #2e8b57;
 }
 
-.nav a:hover::after {
+.nav a:hover::after,
+.nav a.active::after {
   width: 100%;
 }
 
@@ -277,6 +279,65 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ================= CONTACT PAGE ================= */
+.contact-section {
+  padding: 60px 20px;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #2e5d4d;
+}
+
+.contact-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  flex: 1 1 45%;
+  padding: 15px 20px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  flex: 1 1 100%;
+  min-height: 120px;
+}
+
+.contact-form button {
+  flex: 1 1 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: #2e8b57;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background: #246b45;
+}
+
 /* ================= AI ASSISTANT ================= */
 #ai-toggle {
   position: fixed;
@@ -409,14 +470,6 @@ body {
   .hero-content p {
     font-size: 1rem;
   }
-
-  .features {
-    padding: 60px 30px;
-  }
-
-  .cta h2 {
-    font-size: 1.7rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -435,10 +488,5 @@ body {
 
   .subscribe-form button {
     width: 100%;
-  }
-
-  .features {
-    gap: 20px;
-    padding: 40px 20px;
   }
 }
