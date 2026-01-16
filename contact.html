@@ -3,12 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact | Health for Eternity</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,7 +13,6 @@
     <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
     <span class="brand">Health for Eternity</span>
   </div>
-
   <nav class="nav" id="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -27,8 +20,6 @@
     <a href="articles.html">Articles</a>
     <a href="contact.html" class="active">Contact</a>
   </nav>
-
-  <!-- Hamburger Menu -->
   <div class="hamburger" id="hamburger">
     <span></span>
     <span></span>
@@ -37,40 +28,43 @@
 </header>
 
 <!-- ================= CONTACT SECTION ================= -->
-<section id="contact" class="contact-section">
+<section class="contact-section">
   <div class="contact-container">
     <h2>Contact Us</h2>
-    <form id="contact-form" class="contact-form">
-      <input type="text" placeholder="Your Name" name="name" required>
-      <input type="email" placeholder="Email" name="email" required>
-      <textarea placeholder="Message" name="message" required></textarea>
-      <button type="submit" class="btn primary large">Send Message</button>
+    <form class="contact-form" id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn primary">Send Message</button>
     </form>
   </div>
 </section>
 
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p><strong>Health for Eternity</strong></p>
+  <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
+  <small>© 2026 Health for Eternity</small>
+</footer>
+
 <!-- ================= AI ASSISTANT ================= -->
 <button id="ai-toggle" title="Health Assistant">💬</button>
-
 <div id="ai-panel">
   <div class="ai-header">
     <strong>Health Assistant</strong>
     <span id="ai-close">✕</span>
   </div>
-
   <div class="ai-messages" id="ai-messages">
     <div class="ai-message bot">
       Hello 👋 I’m your Health for Eternity assistant. How can I help you today?
     </div>
   </div>
-
   <div class="ai-input">
     <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
     <button id="ai-send">Send</button>
   </div>
 </div>
 
-<!-- ================= JS ================= -->
 <script>
   // Hamburger Toggle
   const hamburger = document.getElementById('hamburger');
@@ -79,19 +73,21 @@
     navLinks.classList.toggle('active');
   });
 
-  // AI Assistant Toggle
+  // AI Toggle
   const aiToggle = document.getElementById('ai-toggle');
   const aiPanel = document.getElementById('ai-panel');
   const aiClose = document.getElementById('ai-close');
 
-  aiToggle.addEventListener('click', () => {
-    aiPanel.style.display = 'flex';
-  });
-  aiClose.addEventListener('click', () => {
-    aiPanel.style.display = 'none';
-  });
+  aiToggle.addEventListener('click', () => aiPanel.style.display = 'flex');
+  aiClose.addEventListener('click', () => aiPanel.style.display = 'none');
 
-  // Contact Form Submission
+  // Contact form submit
   document.getElementById('contact-form').addEventListener('submit', function(e){
     e.preventDefault();
-    alert("Thank yo
+    alert("Thank you! Your message has been sent.");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
