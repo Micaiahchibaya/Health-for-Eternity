@@ -1,3 +1,4 @@
+/* ================= RESET & BASE ================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,9 +9,10 @@ body {
   font-family: 'Inter', sans-serif;
   background: #f6faf8;
   color: #1f2d2b;
+  line-height: 1.6;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .header {
   display: flex;
   justify-content: space-between;
@@ -35,7 +37,8 @@ body {
 
 .brand {
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  color: #2e5d4d;
 }
 
 .nav a {
@@ -44,6 +47,7 @@ body {
   color: #2e5d4d;
   font-weight: 600;
   position: relative;
+  transition: color 0.3s;
 }
 
 .nav a::after {
@@ -54,14 +58,18 @@ body {
   position: absolute;
   bottom: -5px;
   left: 0;
-  transition: 0.3s;
+  transition: width 0.3s;
+}
+
+.nav a:hover {
+  color: #2e8b57;
 }
 
 .nav a:hover::after {
   width: 100%;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   position: relative;
   height: 80vh;
@@ -82,6 +90,7 @@ body {
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
+  padding: 0 20px;
   animation: fadeUp 1.2s ease;
 }
 
@@ -93,21 +102,22 @@ body {
 .hero-content p {
   font-size: 1.2rem;
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto 30px auto;
 }
 
-.hero-buttons {
-  margin-top: 30px;
+.hero-buttons .btn {
+  margin: 5px;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 .btn {
   padding: 14px 30px;
   border-radius: 30px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin: 5px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn.primary {
@@ -134,9 +144,10 @@ body {
 
 .btn.large {
   font-size: 1.1rem;
+  padding: 16px 36px;
 }
 
-/* FEATURES */
+/* ================= FEATURES ================= */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -150,11 +161,15 @@ body {
   border-radius: 18px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: transform 0.4s;
+  transition: transform 0.4s, box-shadow 0.4s;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 0.8s ease forwards;
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
 .feature-card img {
@@ -162,7 +177,23 @@ body {
   margin-bottom: 15px;
 }
 
-/* CTA */
+.feature-card h3 {
+  margin-bottom: 10px;
+  color: #2e8b57;
+}
+
+.feature-card p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Feature animation delays */
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* ================= CTA ================= */
 .cta {
   background: linear-gradient(135deg, #2e8b57, #3cb371);
   color: white;
@@ -175,7 +206,34 @@ body {
   margin-bottom: 25px;
 }
 
-/* FOOTER */
+.cta p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.subscribe-form input[type="email"] {
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  width: 260px;
+  max-width: 90%;
+  margin-right: 10px;
+}
+
+.subscribe-form button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  background: #2e8b57;
+  color: white;
+  cursor: pointer;
+}
+
+.subscribe-form button:hover {
+  background: #246b45;
+}
+
+/* ================= FOOTER ================= */
 .footer {
   padding: 30px;
   text-align: center;
@@ -183,29 +241,23 @@ body {
   color: #cfe5dc;
 }
 
-/* ANIMATION */
+.footer small {
+  display: block;
+  margin-top: 10px;
+  color: #a3c1b0;
+}
+
+/* ================= ANIMATIONS ================= */
 @keyframes fadeUp {
   from { opacity: 0; transform: translate(-50%, -40%); }
   to { opacity: 1; transform: translate(-50%, -50%); }
 }
-.feature-card {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: reveal 0.8s ease forwards;
-}
-
-.feature-card:nth-child(1) { animation-delay: 0.1s; }
-.feature-card:nth-child(2) { animation-delay: 0.2s; }
-.feature-card:nth-child(3) { animation-delay: 0.3s; }
-.feature-card:nth-child(4) { animation-delay: 0.4s; }
 
 @keyframes reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
-/* AI ASSISTANT */
+
+/* ================= AI ASSISTANT ================= */
 #ai-toggle {
   position: fixed;
   bottom: 25px;
@@ -220,6 +272,11 @@ body {
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   z-index: 1000;
+  transition: transform 0.3s;
+}
+
+#ai-toggle:hover {
+  transform: scale(1.1);
 }
 
 #ai-panel {
@@ -244,6 +301,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 600;
 }
 
 .ai-messages {
@@ -292,4 +350,70 @@ body {
   padding: 10px 14px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 40px;
+  }
+
+  .nav {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .features {
+    padding: 60px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .cta h2 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .subscribe-form input[type="email"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .subscribe-form button {
+    width: 100%;
+  }
+
+  .features {
+    gap: 20px;
+    padding: 40px 20px;
+  }
 }
