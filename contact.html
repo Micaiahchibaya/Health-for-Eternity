@@ -3,11 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Contact | Health for Eternity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
-  <button id="ai-toggle" title="Health Assistant">
-  💬
-</button>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="logo-group">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
+    <span class="brand">Health for Eternity</span>
+  </div>
+
+  <nav class="nav" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="principles.html">Principles</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <!-- Hamburger Menu -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <form id="contact-form" class="contact-form">
+      <input type="text" placeholder="Your Name" name="name" required>
+      <input type="email" placeholder="Email" name="email" required>
+      <textarea placeholder="Message" name="message" required></textarea>
+      <button type="submit" class="btn primary large">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= AI ASSISTANT ================= -->
+<button id="ai-toggle" title="Health Assistant">💬</button>
 
 <div id="ai-panel">
   <div class="ai-header">
@@ -17,9 +60,7 @@
 
   <div class="ai-messages" id="ai-messages">
     <div class="ai-message bot">
-      Hello 👋  
-      I’m your Health for Eternity assistant.  
-      How can I help you today?
+      Hello 👋 I’m your Health for Eternity assistant. How can I help you today?
     </div>
   </div>
 
@@ -29,43 +70,28 @@
   </div>
 </div>
 
-<body>
-
-<header class="header">
-  <div class="logo-group">
-    <img src="logo.svg" class="logo">
-    <span class="brand">Health for Eternity</span>
-  </div>
-</header>
-
-<!-- ===== CONTACT US ===== -->
-<section id="contact" style="padding:60px 20px; background:#f1f6f5;">
-  <div class="container" style="max-width:700px; margin:auto; background:#fff; padding:40px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.1);">
-    <h2 style="text-align:center; margin-bottom:30px; color:#2c3e50;">Contact Us</h2>
-    <form id="contact-form" style="display:flex; flex-wrap:wrap; gap:20px;">
-      <input type="text" placeholder="Your Name" name="name" required
-        style="flex:1 1 45%; padding:15px 20px; border-radius:15px; border:1px solid #ccc; box-shadow:inset 0 2px 5px rgba(0,0,0,0.05); font-size:1rem;">
-      <input type="email" placeholder="Email" name="email" required
-        style="flex:1 1 45%; padding:15px 20px; border-radius:15px; border:1px solid #ccc; box-shadow:inset 0 2px 5px rgba(0,0,0,0.05); font-size:1rem;">
-      <textarea placeholder="Message" name="message" required
-        style="flex:1 1 100%; padding:15px 20px; border-radius:15px; border:1px solid #ccc; box-shadow:inset 0 2px 5px rgba(0,0,0,0.05); font-size:1rem; min-height:120px;"></textarea>
-      <button type="submit"
-        style="flex:1 1 100%; padding:15px; border:none; border-radius:30px; background:#27ae60; color:#fff; font-size:1.1rem; font-weight:bold; cursor:pointer; transition:0.3s;">
-        Send Message
-      </button>
-    </form>
-  </div>
-</section>
-
-<!-- ===== OPTIONAL JS FOR SUBMIT ===== -->
+<!-- ================= JS ================= -->
 <script>
-document.getElementById('contact-form').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert("Thank you! Your message has been sent.");
-  this.reset();
-});
-</script>
+  // Hamburger Toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
 
+  // AI Assistant Toggle
+  const aiToggle = document.getElementById('ai-toggle');
+  const aiPanel = document.getElementById('ai-panel');
+  const aiClose = document.getElementById('ai-close');
 
-</body>
-</html>
+  aiToggle.addEventListener('click', () => {
+    aiPanel.style.display = 'flex';
+  });
+  aiClose.addEventListener('click', () => {
+    aiPanel.style.display = 'none';
+  });
+
+  // Contact Form Submission
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Thank yo
