@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Health for Eternity</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<button id="ai-toggle" title="Health Assistant">
+<body>
+
+<!-- ================= AI ASSISTANT ================= -->
+<button id="ai-toggle" title="Health Assistant" class="ai-toggle">
   💬
 </button>
 
-<div id="ai-panel">
+<div id="ai-panel" class="ai-panel">
   <div class="ai-header">
     <strong>Health Assistant</strong>
-    <span id="ai-close">✕</span>
+    <span id="ai-close" class="ai-close">✕</span>
   </div>
 
   <div class="ai-messages" id="ai-messages">
@@ -30,12 +36,10 @@
   </div>
 
   <div class="ai-input">
-    <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
+    <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…" />
     <button id="ai-send">Send</button>
   </div>
 </div>
-
-  <body>
 
 <!-- ================= HEADER ================= -->
 <header class="header">
@@ -44,30 +48,24 @@
     <span class="brand">Health for Eternity</span>
   </div>
 
-<nav class="nav">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="principles.html">Principles</a>
-  <a href="articles.html">Articles</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="principles.html">Principles</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
 <!-- ================= HERO ================= -->
 <section class="hero">
   <img src="banner.png" class="hero-bg" alt="Banner">
-
   <div class="hero-content">
     <h1>Wellness That Lasts</h1>
-    <p>
-      Restoring health. Preserving life.  
-      Preparing for eternity through lifestyle medicine.
-    </p>
-
+    <p>Restoring health. Preserving life. Preparing for eternity through lifestyle medicine.</p>
     <div class="hero-buttons">
-      <button class="btn primary">Explore Articles</button>
-      <button class="btn outline">Learn More</button>
+      <a href="articles.html" class="btn primary">Explore Articles</a>
+      <a href="principles.html" class="btn outline">Learn More</a>
     </div>
   </div>
 </section>
@@ -79,19 +77,16 @@
     <h3>Natural Living</h3>
     <p>Evidence-based nutrition and nature-aligned habits.</p>
   </div>
-
   <div class="feature-card">
     <img src="icons/heart.png" alt="Preventive Care">
     <h3>Preventive Care</h3>
     <p>Health before disease through daily choices.</p>
   </div>
-
   <div class="feature-card">
     <img src="icons/brain.png" alt="Mental Wellness">
     <h3>Mental Wellness</h3>
     <p>Emotional balance, rest, and spiritual clarity.</p>
   </div>
-
   <div class="feature-card">
     <img src="icons/sun.png" alt="Whole Person Health">
     <h3>Whole-Person Health</h3>
@@ -99,19 +94,17 @@
   </div>
 </section>
 
-<!-- ================= CTA ================= -->
+<!-- ================= CALL TO ACTION ================= -->
 <section class="cta">
   <h2>Begin Your Journey to Lasting Health</h2>
-  <button class="btn primary large">Start Today</button>
+  <a href="articles.html" class="btn primary large">Start Today</a>
 </section>
-<section class="cta">
+
+<section class="cta subscribe">
   <h2>Stay Connected</h2>
   <p>Receive practical health insights and lifestyle guidance.</p>
-
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="email" name="email" placeholder="Your email" required
-      style="padding:14px;border-radius:30px;border:none;width:260px;">
-    <br><br>
+  <form action="https://formspree.io/f/yourformid" method="POST" class="subscribe-form">
+    <input type="email" name="email" placeholder="Your email" required>
     <button class="btn primary">Subscribe</button>
   </form>
 </section>
@@ -122,3 +115,9 @@
   <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
   <small>© 2026 Health for Eternity</small>
 </footer>
+
+<!-- ================= JS (optional) ================= -->
+<script src="script.js"></script>
+
+</body>
+</html>
