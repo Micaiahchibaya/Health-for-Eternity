@@ -17,3 +17,21 @@ if (articlesContainer) {
       });
     });
 }
+// Load health principles
+const principlesContainer = document.getElementById("principles-container");
+
+if (principlesContainer) {
+  fetch("data/principles.json")
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "feature-card";
+        card.innerHTML = `
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        `;
+        principlesContainer.appendChild(card);
+      });
+    });
+}
