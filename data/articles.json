@@ -2,16 +2,19 @@
   {
     "title": "The Power of Lifestyle Medicine",
     "summary": "How daily habits shape long-term health and longevity.",
-    "date": "2026-01-10"
+    "date": "2026-01-10",
+    "tags": ["lifestyle", "prevention"]
   },
   {
     "title": "Rest, Rhythm, and Healing",
     "summary": "Why rest is not optional for physical and mental recovery.",
-    "date": "2026-01-12"
+    "date": "2026-01-12",
+    "tags": ["rest", "sleep", "mental"]
   },
   {
     "title": "Preventive Health Principles",
     "summary": "Choosing health before disease through simple decisions.",
-    "date": "2026-01-15"
+    "date": "2026-01-15",
+    "tags": ["prevention", "habits"]
   }
 ]
