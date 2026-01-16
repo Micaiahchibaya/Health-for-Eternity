@@ -254,6 +254,28 @@ body {
 .subscribe-form button:hover {
   background: #246b45;
 }
+#whatsapp-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 55px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
 
 /* ================= FOOTER ================= */
 .footer {
