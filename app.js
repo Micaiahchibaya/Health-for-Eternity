@@ -1,22 +1,52 @@
 // Load articles dynamically
 const articlesContainer = document.getElementById("articles-container");
+const searchInput = document.getElementById("search-input");
+
+let allArticles = [];
 
 if (articlesContainer) {
   fetch("data/articles.json")
     .then(res => res.json())
     .then(data => {
-      data.forEach(article => {
-        const card = document.createElement("div");
-        card.className = "feature-card";
-        card.innerHTML = `
-          <h3>${article.title}</h3>
-          <p>${article.summary}</p>
-          <small>${article.date}</small>
-        `;
-        articlesContainer.appendChild(card);
-      });
+      allArticles = data;
+      renderArticles(data);
     });
 }
+
+function renderArticles(list) {
+  articlesContainer.innerHTML = "";
+
+  if (list.length === 0) {
+    articlesContainer.innerHTML = "<p>No articles found.</p>";
+    return;
+  }
+
+  list.forEach(article => {
+    const card = document.createElement("div");
+    card.className = "feature-card";
+    card.innerHTML = `
+      <h3>${article.title}</h3>
+      <p>${article.summary}</p>
+      <small>${article.date}</small>
+    `;
+    articlesContainer.appendChild(card);
+  });
+}
+
+if (searchInput) {
+  searchInput.addEventListener("input", e => {
+    const value = e.target.value.toLowerCase();
+
+    const filtered = allArticles.filter(article =>
+      article.title.toLowerCase().includes(value) ||
+      article.summary.toLowerCase().includes(value) ||
+      article.tags.join(" ").toLowerCase().includes(value)
+    );
+
+    renderArticles(filtered);
+  });
+}
+
 // Load health principles
 const principlesContainer = document.getElementById("principles-container");
 
