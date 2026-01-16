@@ -1,106 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Health for Eternity</title>
-  <meta name="description" content="Health for Eternity: Wholistic health, wellness, lifestyle tips.">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ===== Header ===== -->
-  <header>
-    <div class="logo-container">
-      <img src="logo.svg" alt="Health for Eternity Logo" class="logo">
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="menu-toggle" id="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
 
- <!-- ===== Banner ===== -->
-<section class="banner">
-  <div class="banner-content">
-    <h1>Welcome to Health for Eternity</h1>
-    <p>Your journey to wholistic health and wellness starts here.</p>
-    <div class="banner-buttons">
-      <a href="#about" class="btn btn-primary">Learn More</a>
-      <a href="#services" class="btn btn-secondary">Our Services</a>
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="logo-group">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
+    <span class="brand">Health for Eternity</span>
+  </div>
+
+  <nav class="nav">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Principles</a>
+    <a href="#">Articles</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <img src="banner.png" class="hero-bg" alt="Banner">
+
+  <div class="hero-content">
+    <h1>Wellness That Lasts</h1>
+    <p>
+      Restoring health. Preserving life.  
+      Preparing for eternity through lifestyle medicine.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn primary">Explore Articles</button>
+      <button class="btn outline">Learn More</button>
     </div>
   </div>
 </section>
 
+<!-- ================= FEATURES ================= -->
+<section class="features">
+  <div class="feature-card">
+    <img src="icons/leaf.svg">
+    <h3>Natural Living</h3>
+    <p>Evidence-based nutrition and nature-aligned habits.</p>
+  </div>
 
-  <!-- ===== Main Content ===== -->
-  <main>
-    <!-- About Section -->
-    <section id="about" class="glass-section">
-      <h2>About Us</h2>
-      <p>Health for Eternity is dedicated to helping you achieve optimal health through a wholistic approach. We focus on lifestyle management, preventive healthcare, and scientifically-backed wellness strategies for long-term well-being.</p>
-    </section>
+  <div class="feature-card">
+    <img src="icons/heart.svg">
+    <h3>Preventive Care</h3>
+    <p>Health before disease through daily choices.</p>
+  </div>
 
-    <!-- Services Section -->
-    <section id="services" class="glass-section cards-section">
-      <h2>Our Services</h2>
-      <div class="cards-container">
-        <div class="card">
-          <h3>Wellness Programs</h3>
-          <p>Personalized health plans to improve lifestyle, diet, and energy levels.</p>
-        </div>
-        <div class="card">
-          <h3>Health Guides</h3>
-          <p>Step-by-step guides on fasting, nutrition, and exercise for all ages.</p>
-        </div>
-        <div class="card">
-          <h3>Consultation</h3>
-          <p>Expert advice and preventive strategies to avoid lifestyle diseases.</p>
-        </div>
-      </div>
-    </section>
+  <div class="feature-card">
+    <img src="icons/brain.svg">
+    <h3>Mental Wellness</h3>
+    <p>Emotional balance, rest, and spiritual clarity.</p>
+  </div>
 
-    <!-- Blog Section -->
-    <section id="blog" class="glass-section">
-      <h2>Latest Articles</h2>
-      <p>Explore our health tips, fasting guides, and nutrition advice to make informed decisions and stay healthy every day.</p>
-    </section>
+  <div class="feature-card">
+    <img src="icons/sun.svg">
+    <h3>Whole-Person Health</h3>
+    <p>Physical, mental, and spiritual harmony.</p>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="glass-section">
-      <h2>Contact Us</h2>
-      <p>Have questions or suggestions? Reach out to us at <a href="mailto:info@healthforeternity.com">info@healthforeternity.com</a>.</p>
-    </section>
-  </main>
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <h2>Begin Your Journey to Lasting Health</h2>
+  <button class="btn primary large">Start Today</button>
+</section>
 
-  <!-- ===== Footer ===== -->
-  <footer>
-    <p>&copy; 2026 Health for Eternity | Designed with ❤️</p>
-    <p>Follow us on 
-      <a href="#">Facebook</a> | 
-      <a href="#">Twitter</a> | 
-      <a href="#">Instagram</a>
-    </p>
-  </footer>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2026 Health for Eternity. All rights reserved.</p>
+</footer>
 
-  <script>
-    // Mobile Menu Toggle
-    const mobileMenu = document.getElementById('mobile-menu');
-    const nav = document.querySelector('nav ul');
-
-    mobileMenu.addEventListener('click', () => {
-      nav.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
-    });
-  </script>
+<script src="app.js"></script>
 </body>
 </html>
