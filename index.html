@@ -108,12 +108,12 @@
 </section>
 
 <!-- ================= CALL TO ACTION ================= -->
-<section class="cta reveal">
+<section class="cta primary-bg reveal">
   <h2>Begin Your Journey to Lasting Health</h2>
   <a href="articles.html" class="btn primary large">Start Today</a>
 </section>
 
-<section class="cta subscribe reveal">
+<section class="cta subscribe-bg reveal">
   <h2>Stay Connected</h2>
   <p>Receive practical health insights and lifestyle guidance.</p>
   <form class="subscribe-form" action="https://formspree.io/f/yourformid" method="POST">
@@ -122,7 +122,7 @@
   </form>
 </section>
 
-<section class="cta support">
+<section class="cta support-bg reveal">
   <h2>Support the Mission</h2>
   <p>Your support helps spread preventive health education.</p>
   <a href="https://buymeacoffee.com/yourname" class="btn primary">Support</a>
@@ -200,7 +200,7 @@ function addMsg(text, sender){
 }
 
 /* ================= OPEN-SOURCE AI INTEGRATION ================= */
-// You can use GPT4All.js or similar browser models
+// GPT4All.js or browser-friendly model
 import { GPT4All } from "https://cdn.jsdelivr.net/npm/gpt4all/dist/gpt4all.browser.min.js";
 
 const gpt = new GPT4All({
@@ -215,9 +215,11 @@ aiSendBtn.onclick = async () => {
   addMsg(text, 'user');
   aiInputEl.value = '';
   
-  // Show placeholder
-  addMsg('...', 'bot');
-  const botDiv = aiMessagesDiv.querySelector('.ai-message.bot:last-child');
+  const botDiv = document.createElement('div');
+  botDiv.className = 'ai-message bot';
+  botDiv.textContent = '...';
+  aiMessagesDiv.appendChild(botDiv);
+  aiMessagesDiv.scrollTop = aiMessagesDiv.scrollHeight;
 
   try {
     const reply = await gpt.generate(text);
