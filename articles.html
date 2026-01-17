@@ -57,6 +57,23 @@
 <section class="features" id="articles-container">
   <!-- Articles load here -->
 </section>
+<section id="articles"></section>
+
+<script>
+fetch('articles.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('articles');
+    data.forEach(a => {
+      container.innerHTML += `
+        <article class="article-card">
+          <h3>${a.title}</h3>
+          <p>${a.excerpt}</p>
+          <small>${a.date}</small>
+        </article>`;
+    });
+  });
+</script>
 
 <script src="app.js"></script>
 </body>
