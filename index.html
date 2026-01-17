@@ -11,7 +11,7 @@
   <meta name="author" content="Health for Eternity">
   <link rel="canonical" href="https://yourdomain.com/">
 
-  <!-- Open Graph (WhatsApp / Facebook) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Health for Eternity">
   <meta property="og:description" content="Restoring health. Preserving life. Preparing for eternity.">
   <meta property="og:image" content="banner.png">
@@ -40,15 +40,13 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+  <div class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
   </div>
 </header>
 
 <!-- ================= HERO ================= -->
-<section class="hero">
+<section class="hero reveal">
   <img src="banner.png" class="hero-bg" alt="Banner" loading="lazy">
 
   <div class="hero-content">
@@ -62,7 +60,7 @@
 </section>
 
 <!-- ================= FEATURES ================= -->
-<section class="features">
+<section class="features reveal">
   <div class="feature-card">
     <img src="icons/leaf.png" alt="Natural Living" loading="lazy">
     <h3>Natural Living</h3>
@@ -89,7 +87,7 @@
 </section>
 
 <!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
+<section class="testimonials reveal">
   <h2>What People Are Saying</h2>
 
   <div class="testimonial-grid">
@@ -97,12 +95,10 @@
       <p>“Health for Eternity reshaped how I understand wellness.”</p>
       <span>— Community Member</span>
     </div>
-
     <div class="testimonial-card">
       <p>“The focus on preventive health is exactly what modern healthcare needs.”</p>
       <span>— Health Professional</span>
     </div>
-
     <div class="testimonial-card">
       <p>“Grounded, practical, and deeply encouraging.”</p>
       <span>— Reader</span>
@@ -111,12 +107,12 @@
 </section>
 
 <!-- ================= CTA ================= -->
-<section class="cta">
+<section class="cta reveal">
   <h2>Begin Your Journey to Lasting Health</h2>
   <a href="articles.html" class="btn primary large">Start Today</a>
 </section>
 
-<section class="cta subscribe">
+<section class="cta subscribe reveal">
   <h2>Stay Connected</h2>
   <p>Receive practical health insights and lifestyle guidance.</p>
   <form class="subscribe-form" action="https://formspree.io/f/yourformid" method="POST">
@@ -133,12 +129,12 @@
 </footer>
 
 <!-- ================= AI ASSISTANT ================= -->
-<button id="ai-toggle" title="Health Assistant">💬</button>
+<button id="ai-toggle" aria-label="Open Health Assistant" title="Health Assistant">💬</button>
 
 <div id="ai-panel">
   <div class="ai-header">
     <strong>Health Assistant</strong>
-    <span id="ai-close">✕</span>
+    <span id="ai-close" aria-label="Close assistant">✕</span>
   </div>
 
   <div class="ai-messages" id="ai-messages">
@@ -158,17 +154,15 @@
 /* Hamburger */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
 /* AI Panel */
 const aiToggle = document.getElementById('ai-toggle');
 const aiPanel = document.getElementById('ai-panel');
 const aiClose = document.getElementById('ai-close');
 
-aiToggle.addEventListener('click', () => aiPanel.style.display = 'flex');
-aiClose.addEventListener('click', () => aiPanel.style.display = 'none');
+aiToggle.onclick = () => aiPanel.style.display = 'flex';
+aiClose.onclick = () => aiPanel.style.display = 'none';
 
 /* AI Logic */
 const aiMessages = document.getElementById('ai-messages');
@@ -183,7 +177,7 @@ const responses = {
   default: "Health for Eternity focuses on lifestyle-based prevention and whole-person wellness."
 };
 
-aiSend.addEventListener('click', () => {
+aiSend.onclick = () => {
   const text = aiInput.value.toLowerCase();
   if (!text) return;
   addMsg(text, 'user');
@@ -196,7 +190,7 @@ aiSend.addEventListener('click', () => {
 
   setTimeout(() => addMsg(reply, 'bot'), 600);
   aiInput.value = '';
-});
+};
 
 function addMsg(text, type) {
   const div = document.createElement('div');
@@ -205,6 +199,13 @@ function addMsg(text, type) {
   aiMessages.appendChild(div);
   aiMessages.scrollTop = aiMessages.scrollHeight;
 }
+
+/* Scroll Reveal */
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
+},{ threshold: 0.2 });
+reveals.forEach(r => observer.observe(r));
 </script>
 
 <!-- WhatsApp -->
