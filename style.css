@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #f6faf8;
-  color: #1f2d2b;
+  background: var(--light);
+  color: var(--dark);
   line-height: 1.6;
   scroll-behavior: smooth;
 }
@@ -43,7 +43,7 @@ body::before {
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 20px var(--shadow);
 }
 
 .logo-group {
@@ -152,7 +152,7 @@ body::before {
 .hero-content p {
   font-size: 1.2rem;
   max-width: 600px;
-  margin: 0 auto 30px;
+  margin: 0 auto 30px auto;
   text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
@@ -286,6 +286,9 @@ body::before {
   color: #cfe5dc;
 }
 
+.footer p, 
+.footer strong { color: #cfe5dc; }
+
 .footer small { display: block; margin-top: 10px; color: #a3c1b0; }
 
 /* ================= AI BUTTON ================= */
@@ -302,38 +305,110 @@ body::before {
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 10px 25px var(--shadow);
-  transition: transform 0.3s;
+  transition: transform 0.3s, background 0.3s;
 }
-#ai-toggle:hover { transform: scale(1.1); }
+#ai-toggle:hover { transform: scale(1.1); background: var(--secondary); }
 
-/* AI PANEL */
+/* ================= AI PANEL ================= */
 #ai-panel {
   position: fixed;
   bottom: 90px;
   right: 25px;
   width: 320px;
   max-height: 420px;
-  background: white;
+  background: var(--light);
   border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 40px var(--shadow);
   display: none;
   flex-direction: column;
   overflow: hidden;
 }
 
-.ai-header { background: var(--primary); color: white; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+.ai-header { 
+  background: var(--primary); 
+  color: white; 
+  padding: 12px 16px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  font-weight: 600; 
+}
 
-.ai-messages { padding: 15px; overflow-y: auto; flex-grow: 1; background: var(--light); }
+.ai-messages { 
+  padding: 15px; 
+  overflow-y: auto; 
+  flex-grow: 1; 
+  background: var(--light); 
+}
 
-.ai-message { padding: 10px 14px; border-radius: 14px; margin-bottom: 10px; max-width: 85%; font-size: 0.9rem; }
-.ai-message.bot { background: #e0f2ea; }
-.ai-message.user { background: var(--primary); color: white; margin-left: auto; }
+.ai-message { 
+  padding: 10px 14px; 
+  border-radius: 14px; 
+  margin-bottom: 10px; 
+  max-width: 85%; 
+  font-size: 0.9rem; 
+}
 
-.ai-input { display: flex; padding: 10px; gap: 8px; border-top: 1px solid #ddd; }
-.ai-input input { flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ccc; }
-.ai-input button { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 20px; cursor: pointer; }
+.ai-message.bot { 
+  background: #e0f2ea; 
+  color: var(--dark);
+}
+
+.ai-message.user { 
+  background: var(--primary); 
+  color: white; 
+  margin-left: auto; 
+}
+
+.ai-input { 
+  display: flex; 
+  padding: 10px; 
+  gap: 8px; 
+  border-top: 1px solid #ddd; 
+  background: var(--light);
+}
+
+.ai-input input { 
+  flex: 1; 
+  padding: 10px; 
+  border-radius: 20px; 
+  border: 1px solid #ccc; 
+  background: white;
+  color: var(--dark);
+}
+
+.ai-input button { 
+  background: var(--primary); 
+  color: white; 
+  border: none; 
+  padding: 10px 14px; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  transition: background 0.3s, transform 0.3s;
+}
+
+.ai-input button:hover { 
+  background: var(--secondary); 
+  transform: scale(1.05); 
+}
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 1024px) { .header { flex-direction: column; align-items: center; padding: 20px 40px; } .nav { margin-top: 10px; } }
-@media (max-width: 768px) { .nav { display: none; flex-direction: column; gap: 12px; width: 100%; text-align: center; } .nav.active { display: flex; } .hamburger { display: flex; } .hero-content h1 { font-size: 2rem; } .hero-content p { font-size: 1rem; } }
-@media (max-width: 480px) { .hero-content h1 { font-size: 1.6rem; } .hero-content p { font-size: 0.95rem; } }
+@media (max-width: 1024px) { 
+  .header { flex-direction: column; align-items: center; padding: 20px 40px; } 
+  .nav { margin-top: 10px; } 
+}
+
+@media (max-width: 768px) { 
+  .nav { display: none; flex-direction: column; gap: 12px; width: 100%; text-align: center; } 
+  .nav.active { display: flex; } 
+  .hamburger { display: flex; } 
+  .hero-content h1 { font-size: 2rem; } 
+  .hero-content p { font-size: 1rem; } 
+}
+
+@media (max-width: 480px) { 
+  .hero-content h1 { font-size: 1.6rem; } 
+  .hero-content p { font-size: 0.95rem; } 
+  .ai-panel { width: 90%; right: 5%; bottom: 80px; }
+  .ai-input input, .ai-input button { font-size: 0.9rem; padding: 8px; }
+}
