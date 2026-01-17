@@ -44,6 +44,8 @@
     <span></span><span></span><span></span>
   </div>
 </header>
+
+<!-- Language Switch -->
 <select id="lang-switch">
   <option value="en">EN</option>
   <option value="sn">SN</option>
@@ -62,17 +64,6 @@
     </div>
   </div>
 </section>
-/* ================= LANGUAGE ================= */
-fetch('lang.json')
-  .then(res => res.json())
-  .then(lang => {
-    const select = document.getElementById('lang-switch');
-    select.onchange = () => {
-      const l = lang[select.value];
-      document.querySelector('.hero h1').textContent = l.heroTitle;
-      document.querySelector('.hero p').textContent = l.heroText;
-    };
-  });
 
 <!-- ================= FEATURES ================= -->
 <section class="features reveal">
@@ -104,7 +95,6 @@ fetch('lang.json')
 <!-- ================= TESTIMONIALS ================= -->
 <section class="testimonials reveal">
   <h2>What People Are Saying</h2>
-
   <div class="testimonial-grid">
     <div class="testimonial-card">
       <p>“Health for Eternity reshaped how I understand wellness.”</p>
@@ -135,6 +125,7 @@ fetch('lang.json')
     <button type="submit">Subscribe</button>
   </form>
 </section>
+
 <section class="cta support">
   <h2>Support the Mission</h2>
   <p>Your support helps spread preventive health education.</p>
@@ -168,16 +159,29 @@ fetch('lang.json')
     <button id="ai-send">Send</button>
   </div>
 </div>
+
 <p class="ai-disclaimer">
   ⚠️ Educational only. Not a substitute for medical care.
 </p>
 
 <!-- ================= JS ================= -->
 <script>
-/* Hamburger */
+/* Hamburger Menu */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+/* Language Switch */
+fetch('lang.json')
+  .then(res => res.json())
+  .then(lang => {
+    const select = document.getElementById('lang-switch');
+    select.onchange = () => {
+      const l = lang[select.value];
+      document.querySelector('.hero h1').textContent = l.heroTitle;
+      document.querySelector('.hero p').textContent = l.heroText;
+    };
+  });
 
 /* AI Panel */
 const aiToggle = document.getElementById('ai-toggle');
@@ -215,27 +219,4 @@ aiSend.onclick = () => {
   aiInput.value = '';
 };
 
-function addMsg(text, type) {
-  const div = document.createElement('div');
-  div.className = `ai-message ${type}`;
-  div.textContent = text;
-  aiMessages.appendChild(div);
-  aiMessages.scrollTop = aiMessages.scrollHeight;
-}
-
-/* Scroll Reveal */
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
-},{ threshold: 0.2 });
-reveals.forEach(r => observer.observe(r));
-</script>
-
-<!-- WhatsApp -->
-<a href="https://whatsapp.com/channel/0029VbCA1z27z4kk84O2Cr1c"
-   target="_blank"
-   id="whatsapp-btn"
-   title="Follow Health for Eternity on WhatsApp">📢</a>
-
-</body>
-</html>
+function addMsg(text,
