@@ -5,6 +5,18 @@
   <title>Health for Eternity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- SEO -->
+  <meta name="description" content="Health for Eternity promotes preventive health, lifestyle medicine, natural living, and whole-person wellness.">
+  <meta name="keywords" content="lifestyle medicine, preventive health, wellness, natural health">
+  <meta name="author" content="Health for Eternity">
+  <link rel="canonical" href="https://yourdomain.com/">
+
+  <!-- Open Graph (WhatsApp / Facebook) -->
+  <meta property="og:title" content="Health for Eternity">
+  <meta property="og:description" content="Restoring health. Preserving life. Preparing for eternity.">
+  <meta property="og:image" content="banner.png">
+  <meta property="og:type" content="website">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -16,7 +28,7 @@
 <!-- ================= HEADER ================= -->
 <header class="header">
   <div class="logo-group">
-    <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo" loading="lazy">
     <span class="brand">Health for Eternity</span>
   </div>
 
@@ -28,7 +40,6 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Hamburger Menu -->
   <div class="hamburger" id="hamburger">
     <span></span>
     <span></span>
@@ -38,7 +49,7 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero">
-  <img src="banner.png" class="hero-bg" alt="Banner">
+  <img src="banner.png" class="hero-bg" alt="Banner" loading="lazy">
 
   <div class="hero-content">
     <h1>Wellness That Lasts</h1>
@@ -53,55 +64,47 @@
 <!-- ================= FEATURES ================= -->
 <section class="features">
   <div class="feature-card">
-    <img src="icons/leaf.png" alt="Natural Living">
+    <img src="icons/leaf.png" alt="Natural Living" loading="lazy">
     <h3>Natural Living</h3>
     <p>Evidence-based nutrition and nature-aligned habits.</p>
   </div>
 
   <div class="feature-card">
-    <img src="icons/heart.png" alt="Preventive Care">
+    <img src="icons/heart.png" alt="Preventive Care" loading="lazy">
     <h3>Preventive Care</h3>
     <p>Health before disease through daily choices.</p>
   </div>
 
   <div class="feature-card">
-    <img src="icons/brain.png" alt="Mental Wellness">
+    <img src="icons/brain.png" alt="Mental Wellness" loading="lazy">
     <h3>Mental Wellness</h3>
     <p>Emotional balance, rest, and spiritual clarity.</p>
   </div>
 
   <div class="feature-card">
-    <img src="icons/sun.png" alt="Whole Person Health">
+    <img src="icons/sun.png" alt="Whole Person Health" loading="lazy">
     <h3>Whole-Person Health</h3>
     <p>Physical, mental, and spiritual harmony.</p>
   </div>
 </section>
+
 <!-- ================= TESTIMONIALS ================= -->
 <section class="testimonials">
   <h2>What People Are Saying</h2>
 
   <div class="testimonial-grid">
     <div class="testimonial-card">
-      <p>
-        “Health for Eternity reshaped how I understand wellness.
-        Simple principles, profound impact.”
-      </p>
+      <p>“Health for Eternity reshaped how I understand wellness.”</p>
       <span>— Community Member</span>
     </div>
 
     <div class="testimonial-card">
-      <p>
-        “The focus on preventive health and lifestyle medicine
-        is exactly what modern healthcare needs.”
-      </p>
+      <p>“The focus on preventive health is exactly what modern healthcare needs.”</p>
       <span>— Health Professional</span>
     </div>
 
     <div class="testimonial-card">
-      <p>
-        “This platform brings clarity, balance, and hope.
-        It feels trustworthy and grounded.”
-      </p>
+      <p>“Grounded, practical, and deeply encouraging.”</p>
       <span>— Reader</span>
     </div>
   </div>
@@ -152,27 +155,63 @@
 
 <!-- ================= JS ================= -->
 <script>
-  // Hamburger Toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+/* Hamburger */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
 
-  // AI Assistant Toggle
-  const aiToggle = document.getElementById('ai-toggle');
-  const aiPanel = document.getElementById('ai-panel');
-  const aiClose = document.getElementById('ai-close');
+/* AI Panel */
+const aiToggle = document.getElementById('ai-toggle');
+const aiPanel = document.getElementById('ai-panel');
+const aiClose = document.getElementById('ai-close');
 
-  aiToggle.addEventListener('click', () => {
-    aiPanel.style.display = 'flex';
-  });
-  aiClose.addEventListener('click', () => {
-    aiPanel.style.display = 'none';
-  });
+aiToggle.addEventListener('click', () => aiPanel.style.display = 'flex');
+aiClose.addEventListener('click', () => aiPanel.style.display = 'none');
+
+/* AI Logic */
+const aiMessages = document.getElementById('ai-messages');
+const aiInput = document.getElementById('ai-input');
+const aiSend = document.getElementById('ai-send');
+
+const responses = {
+  nutrition: "Whole foods, plant-forward meals, and hydration support long-term health.",
+  rest: "Consistent sleep, weekly rest, and mental calm restore the body.",
+  exercise: "Daily movement and sunlight strengthen immunity and resilience.",
+  stress: "Nature, prayer, breathing, and simplicity reduce stress.",
+  default: "Health for Eternity focuses on lifestyle-based prevention and whole-person wellness."
+};
+
+aiSend.addEventListener('click', () => {
+  const text = aiInput.value.toLowerCase();
+  if (!text) return;
+  addMsg(text, 'user');
+
+  let reply = responses.default;
+  if (text.includes('food')) reply = responses.nutrition;
+  if (text.includes('sleep')) reply = responses.rest;
+  if (text.includes('exercise')) reply = responses.exercise;
+  if (text.includes('stress')) reply = responses.stress;
+
+  setTimeout(() => addMsg(reply, 'bot'), 600);
+  aiInput.value = '';
+});
+
+function addMsg(text, type) {
+  const div = document.createElement('div');
+  div.className = `ai-message ${type}`;
+  div.textContent = text;
+  aiMessages.appendChild(div);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}
 </script>
-<!-- WhatsApp Channel Floating Button -->
-<a href="https://whatsapp.com/channel/0029VbCA1z27z4kk84O2Cr1c" target="_blank" id="whatsapp-btn" title="Follow Health for Eternity on WhatsApp">📢</a>
+
+<!-- WhatsApp -->
+<a href="https://whatsapp.com/channel/0029VbCA1z27z4kk84O2Cr1c"
+   target="_blank"
+   id="whatsapp-btn"
+   title="Follow Health for Eternity on WhatsApp">📢</a>
 
 </body>
 </html>
