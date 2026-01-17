@@ -45,35 +45,15 @@
   </div>
 </header>
 
-<!-- Language Switch -->
+<!-- ================= LANGUAGE SWITCH ================= -->
 <select id="lang-switch">
   <option value="en">EN</option>
   <option value="sn">SN</option>
 </select>
-<script>
-/* =============== LANGUAGE SWITCH =============== */
-fetch('lang.json')
-  .then(res => res.json())
-  .then(lang => {
-    const select = document.getElementById('lang-switch');
-    const heroTitle = document.querySelector('.hero h1');
-    const heroText = document.querySelector('.hero p');
-
-    select.addEventListener('change', () => {
-      const selected = lang[select.value];
-      if (selected) {
-        heroTitle.textContent = selected.heroTitle;
-        heroText.textContent = selected.heroText;
-      }
-    });
-  })
-  .catch(err => console.error("Language file error:", err));
-</script>
 
 <!-- ================= HERO ================= -->
 <section class="hero reveal">
   <img src="banner.png" class="hero-bg" alt="Banner" loading="lazy">
-
   <div class="hero-content">
     <h1>Wellness That Lasts</h1>
     <p>Restoring health. Preserving life. Preparing for eternity through lifestyle medicine.</p>
@@ -91,19 +71,16 @@ fetch('lang.json')
     <h3>Natural Living</h3>
     <p>Evidence-based nutrition and nature-aligned habits.</p>
   </div>
-
   <div class="feature-card">
     <img src="icons/heart.png" alt="Preventive Care" loading="lazy">
     <h3>Preventive Care</h3>
     <p>Health before disease through daily choices.</p>
   </div>
-
   <div class="feature-card">
     <img src="icons/brain.png" alt="Mental Wellness" loading="lazy">
     <h3>Mental Wellness</h3>
     <p>Emotional balance, rest, and spiritual clarity.</p>
   </div>
-
   <div class="feature-card">
     <img src="icons/sun.png" alt="Whole Person Health" loading="lazy">
     <h3>Whole-Person Health</h3>
@@ -130,7 +107,7 @@ fetch('lang.json')
   </div>
 </section>
 
-<!-- ================= CTA ================= -->
+<!-- ================= CALL TO ACTION ================= -->
 <section class="cta reveal">
   <h2>Begin Your Journey to Lasting Health</h2>
   <a href="articles.html" class="btn primary large">Start Today</a>
@@ -169,7 +146,7 @@ fetch('lang.json')
 
   <div class="ai-messages" id="ai-messages">
     <div class="ai-message bot">
-      Hello 👋 I’m your Health for Eternity assistant. How can I help you today?
+      Hello 👋 I’m your Health for Eternity assistant. Ask me about nutrition, rest, or lifestyle.
     </div>
   </div>
 
@@ -178,102 +155,19 @@ fetch('lang.json')
     <button id="ai-send">Send</button>
   </div>
 </div>
-<script>
-/* Hamburger Menu */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-
-/* Language Switch */
-fetch('lang.json')
-  .then(res => res.json())
-  .then(lang => {
-    const select = document.getElementById('lang-switch');
-    select.onchange = () => {
-      const l = lang[select.value];
-      document.querySelector('.hero h1').textContent = l.heroTitle;
-      document.querySelector('.hero p').textContent = l.heroText;
-    };
-  });
-
-/* ================= AI PANEL ================= */
-const aiToggle = document.getElementById('ai-toggle');
-const aiPanel = document.getElementById('ai-panel');
-const aiClose = document.getElementById('ai-close');
-const aiMessages = document.getElementById('ai-messages');
-const aiInput = document.getElementById('ai-input');
-const aiSend = document.getElementById('ai-send');
-
-aiToggle.onclick = () => aiPanel.style.display = 'flex';
-aiClose.onclick = () => aiPanel.style.display = 'none';
-
-/* Helper to add messages */
-function addMsg(text, sender){
-  const div = document.createElement('div');
-  div.className = `ai-message ${sender}`;
-  div.textContent = text;
-  aiMessages.appendChild(div);
-  aiMessages.scrollTop = aiMessages.scrollHeight;
-}
-
-/* ================= SIMPLE OPENAI API INTEGRATION ================= */
-// Replace this with your own OpenAI API key
-const OPENAI_KEY = "YOUR_OPENAI_API_KEY";
-
-async function getAIResponse(prompt){
-  try {
-    const res = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${OPENAI_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-    const data = await res.json();
-    return data.choices[0].message.content;
-  } catch(err) {
-    console.error(err);
-    return "Sorry, the AI is unavailable right now. Please try again later.";
-  }
-}
-
-/* Send AI message */
-aiSend.onclick = async () => {
-  const text = aiInput.value.trim();
-  if(!text) return;
-  addMsg(text, 'user');
-  aiInput.value = '';
-
-  // Show a typing placeholder
-  addMsg('...', 'bot');
-
-  const botDiv = aiMessages.querySelector('.ai-message.bot:last-child');
-  const reply = await getAIResponse(text);
-
-  botDiv.textContent = reply;
-};
-
-aiInput.addEventListener('keypress', (e) => {
-  if(e.key === 'Enter') aiSend.click();
-});
-</script>
 
 <p class="ai-disclaimer">
   ⚠️ Educational only. Not a substitute for medical care.
 </p>
 
-<!-- ================= JS ================= -->
-<script>
-/* Hamburger Menu */
+<!-- ================= SCRIPTS ================= -->
+<script type="module">
+/* ================= HAMBURGER MENU ================= */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-/* Language Switch */
+/* ================= LANGUAGE SWITCH ================= */
 fetch('lang.json')
   .then(res => res.json())
   .then(lang => {
@@ -285,40 +179,59 @@ fetch('lang.json')
     };
   });
 
-/* AI Panel */
-const aiToggle = document.getElementById('ai-toggle');
-const aiPanel = document.getElementById('ai-panel');
-const aiClose = document.getElementById('ai-close');
+/* ================= AI PANEL TOGGLE ================= */
+const aiToggleBtn = document.getElementById('ai-toggle');
+const aiPanelDiv = document.getElementById('ai-panel');
+const aiCloseBtn = document.getElementById('ai-close');
+const aiMessagesDiv = document.getElementById('ai-messages');
+const aiInputEl = document.getElementById('ai-input');
+const aiSendBtn = document.getElementById('ai-send');
 
-aiToggle.onclick = () => aiPanel.style.display = 'flex';
-aiClose.onclick = () => aiPanel.style.display = 'none';
+aiToggleBtn.onclick = () => aiPanelDiv.style.display = 'flex';
+aiCloseBtn.onclick = () => aiPanelDiv.style.display = 'none';
 
-/* AI Logic */
-const aiMessages = document.getElementById('ai-messages');
-const aiInput = document.getElementById('ai-input');
-const aiSend = document.getElementById('ai-send');
+/* ================= HELPER FUNCTION ================= */
+function addMsg(text, sender){
+  const div = document.createElement('div');
+  div.className = `ai-message ${sender}`;
+  div.textContent = text;
+  aiMessagesDiv.appendChild(div);
+  aiMessagesDiv.scrollTop = aiMessagesDiv.scrollHeight;
+}
 
-const responses = {
-  nutrition: "Whole foods, plant-forward meals, and hydration support long-term health.",
-  rest: "Consistent sleep, weekly rest, and mental calm restore the body.",
-  exercise: "Daily movement and sunlight strengthen immunity and resilience.",
-  stress: "Nature, prayer, breathing, and simplicity reduce stress.",
-  default: "Health for Eternity focuses on lifestyle-based prevention and whole-person wellness."
-};
+/* ================= OPEN-SOURCE AI INTEGRATION ================= */
+// You can use GPT4All.js or similar browser models
+import { GPT4All } from "https://cdn.jsdelivr.net/npm/gpt4all/dist/gpt4all.browser.min.js";
 
-aiSend.onclick = () => {
-  const text = aiInput.value.toLowerCase();
+const gpt = new GPT4All({
+  model: "ggml-mpt-7b-chat.bin", // small browser-friendly model
+  path: "./models/" // place model locally
+});
+
+/* ================= AI SEND LOGIC ================= */
+aiSendBtn.onclick = async () => {
+  const text = aiInputEl.value.trim();
   if (!text) return;
   addMsg(text, 'user');
+  aiInputEl.value = '';
+  
+  // Show placeholder
+  addMsg('...', 'bot');
+  const botDiv = aiMessagesDiv.querySelector('.ai-message.bot:last-child');
 
-  let reply = responses.default;
-  if (text.includes('food')) reply = responses.nutrition;
-  if (text.includes('sleep')) reply = responses.rest;
-  if (text.includes('exercise')) reply = responses.exercise;
-  if (text.includes('stress')) reply = responses.stress;
-
-  setTimeout(() => addMsg(reply, 'bot'), 600);
-  aiInput.value = '';
+  try {
+    const reply = await gpt.generate(text);
+    botDiv.textContent = reply;
+  } catch(err) {
+    botDiv.textContent = "AI failed to load. Check console.";
+    console.error(err);
+  }
 };
 
-function addMsg(text,
+aiInputEl.addEventListener('keypress', e => {
+  if(e.key === 'Enter') aiSendBtn.click();
+});
+</script>
+
+</body>
+</html>
