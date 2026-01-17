@@ -88,29 +88,10 @@
   </div>
 </section>
 
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials reveal">
-  <h2>What People Are Saying</h2>
-  <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <p>“Health for Eternity reshaped how I understand wellness.”</p>
-      <span>— Community Member</span>
-    </div>
-    <div class="testimonial-card">
-      <p>“The focus on preventive health is exactly what modern healthcare needs.”</p>
-      <span>— Health Professional</span>
-    </div>
-    <div class="testimonial-card">
-      <p>“Grounded, practical, and deeply encouraging.”</p>
-      <span>— Reader</span>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CALL TO ACTION ================= -->
+<!-- ================= CTA ================= -->
 <section class="cta primary-bg reveal">
   <h2>Begin Your Journey to Lasting Health</h2>
-  <a href="articles.html" class="btn primary large">Start Today</a>
+  <a href="articles.html" class="btn">Start Today</a>
 </section>
 
 <section class="cta subscribe-bg reveal">
@@ -125,7 +106,7 @@
 <section class="cta support-bg reveal">
   <h2>Support the Mission</h2>
   <p>Your support helps spread preventive health education.</p>
-  <a href="https://buymeacoffee.com/yourname" class="btn primary">Support</a>
+  <a href="https://buymeacoffee.com/yourname" class="btn">Support</a>
 </section>
 
 <!-- ================= FOOTER ================= -->
@@ -162,12 +143,12 @@
 
 <!-- ================= SCRIPTS ================= -->
 <script type="module">
-/* ========== HAMBURGER MENU ========== */
+/* ================= HAMBURGER MENU ================= */
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-/* ========== LANGUAGE SWITCH ========== */
+/* ================= LANGUAGE SWITCH ================= */
 fetch('lang.json')
   .then(res => res.json())
   .then(lang => {
@@ -179,7 +160,7 @@ fetch('lang.json')
     };
   });
 
-/* ========== AI PANEL TOGGLE ========== */
+/* ================= AI PANEL TOGGLE ================= */
 const aiToggleBtn = document.getElementById('ai-toggle');
 const aiPanelDiv = document.getElementById('ai-panel');
 const aiCloseBtn = document.getElementById('ai-close');
@@ -190,7 +171,7 @@ const aiSendBtn = document.getElementById('ai-send');
 aiToggleBtn.onclick = () => aiPanelDiv.style.display = 'flex';
 aiCloseBtn.onclick = () => aiPanelDiv.style.display = 'none';
 
-/* ========== HELPER FUNCTION ========== */
+/* ================= HELPER FUNCTION ================= */
 function addMsg(text, sender){
   const div = document.createElement('div');
   div.className = `ai-message ${sender}`;
@@ -199,60 +180,36 @@ function addMsg(text, sender){
   aiMessagesDiv.scrollTop = aiMessagesDiv.scrollHeight;
 }
 
-/* ========== OPEN-SOURCE AI + OPENAI FALLBACK ========== */
-import { GPT4All } from "https://cdn.jsdelivr.net/npm/gpt4all/dist/gpt4all.browser.min.js";
-const gpt = new GPT4All({ model: "ggml-mpt-7b-chat.bin", path: "./models/" });
-
-// Optional fallback API
-const OPENAI_KEY = "YOUR_OPENAI_API_KEY"; // replace with actual key
-
-async function getAIResponse(prompt){
+/* ================= OPENAI BACKEND INTEGRATION ================= */
+async function sendToAI(message) {
   try {
-    const reply = await gpt.generate(prompt);
-    if(reply) return reply;
-    throw new Error("Local model failed");
-  } catch {
-    // Fallback to OpenAI API
-    try {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${OPENAI_KEY}`
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: prompt }]
-        })
-      });
-      const data = await res.json();
-      return data.choices[0].message.content;
-    } catch(err) {
-      console.error(err);
-      return "AI is temporarily unavailable. Try again later.";
-    }
+    const res = await fetch("https://your-vercel-serverless-endpoint.vercel.app/api/chat", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ message, history: [] })
+    });
+    const data = await res.json();
+    return data.reply || "AI did not respond.";
+  } catch(err){
+    console.error(err);
+    return "AI request failed.";
   }
 }
 
-/* ========== AI SEND LOGIC ========== */
+/* ================= AI SEND LOGIC ================= */
 aiSendBtn.onclick = async () => {
   const text = aiInputEl.value.trim();
   if(!text) return;
-  addMsg(text, 'user');
+  addMsg(text,'user');
   aiInputEl.value = '';
-
-  const botDiv = document.createElement('div');
-  botDiv.className = 'ai-message bot';
-  botDiv.textContent = '...';
-  aiMessagesDiv.appendChild(botDiv);
-  aiMessagesDiv.scrollTop = aiMessagesDiv.scrollHeight;
-
-  const reply = await getAIResponse(text);
+  addMsg('...', 'bot');
+  const botDiv = aiMessagesDiv.querySelector('.ai-message.bot:last-child');
+  const reply = await sendToAI(text);
   botDiv.textContent = reply;
 };
 
 aiInputEl.addEventListener('keypress', e => {
-  if(e.key === 'Enter') aiSendBtn.click();
+  if(e.key==='Enter') aiSendBtn.click();
 });
 </script>
 
