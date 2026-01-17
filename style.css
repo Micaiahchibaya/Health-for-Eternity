@@ -412,3 +412,29 @@ body::before {
   .ai-panel { width: 90%; right: 5%; bottom: 80px; }
   .ai-input input, .ai-input button { font-size: 0.9rem; padding: 8px; }
 }
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.support-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  text-align: center;
+}
+
+.support-card h3 {
+  margin-bottom: .5rem;
+}
+
+details {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
