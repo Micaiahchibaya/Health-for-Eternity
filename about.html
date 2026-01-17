@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About | Health for Eternity</title>
+  <title>About — Health for Eternity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn about Health for Eternity's mission, vision, and approach to preventive health and lifestyle medicine.">
-  <meta name="keywords" content="about health, preventive medicine, lifestyle, wellness">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="logo-group">
     <img src="logo.svg" class="logo" alt="Health for Eternity Logo" loading="lazy">
     <span class="brand">Health for Eternity</span>
   </div>
+
   <nav class="nav" id="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html" class="active">About</a>
@@ -22,104 +23,52 @@
     <a href="articles.html">Articles</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+
+  <div class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
 </header>
 
+<!-- ================= HERO ================= -->
 <section class="hero reveal">
-  <img src="banner.png" class="hero-bg" alt="About Banner" loading="lazy">
+  <img src="about-banner.png" class="hero-bg" alt="About Banner" loading="lazy">
   <div class="hero-content">
     <h1>About Health for Eternity</h1>
-    <p>Our mission is to restore health, educate on preventive lifestyle, and prepare individuals for lasting wellness.</p>
-    <div class="hero-buttons">
-      <a href="articles.html" class="btn primary">Explore Articles</a>
-      <a href="contact.html" class="btn outline">Get in Touch</a>
-    </div>
+    <p>We promote preventive health, lifestyle medicine, and whole-person wellness through practical guidance and education.</p>
   </div>
 </section>
 
+<!-- ================= CONTENT ================= -->
 <section class="features reveal">
   <div class="feature-card">
+    <img src="icons/mission.png" alt="Mission" loading="lazy">
     <h3>Our Mission</h3>
-    <p>To empower individuals with evidence-based lifestyle strategies to prevent disease and maintain holistic wellness.</p>
+    <p>Empower communities to live healthier, longer, and spiritually fulfilling lives.</p>
   </div>
   <div class="feature-card">
+    <img src="icons/vision.png" alt="Vision" loading="lazy">
     <h3>Our Vision</h3>
-    <p>A healthier world where preventive care and lifestyle medicine guide daily choices and community health.</p>
+    <p>Health for Eternity seeks to create a world where lifestyle medicine and preventive care are accessible to all.</p>
   </div>
   <div class="feature-card">
-    <h3>Our Approach</h3>
-    <p>Integrating nutrition, rest, physical activity, and mental clarity into a practical, achievable lifestyle.</p>
+    <img src="icons/team.png" alt="Team" loading="lazy">
+    <h3>Our Team</h3>
+    <p>A passionate group of health educators, researchers, and wellness advocates dedicated to your well-being.</p>
   </div>
 </section>
 
-<section class="cta reveal primary-bg">
-  <h2>Join Us on This Journey</h2>
-  <a href="articles.html" class="btn primary large">Learn More</a>
-</section>
-
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p><strong>Health for Eternity</strong></p>
   <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
   <small>© 2026 Health for Eternity</small>
 </footer>
 
-<button id="ai-toggle" title="Health Assistant">💬</button>
-<div id="ai-panel">
-  <div class="ai-header"><strong>Health Assistant</strong><span id="ai-close">✕</span></div>
-  <div class="ai-messages" id="ai-messages"><div class="ai-message bot">Hello 👋 I’m your Health assistant. Ask me about nutrition, rest, or lifestyle.</div></div>
-  <div class="ai-input">
-    <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
-    <button id="ai-send">Send</button>
-  </div>
-</div>
-
+<!-- ================= SCRIPTS ================= -->
 <script type="module">
-const hamburger=document.getElementById('hamburger');
-const navLinks=document.getElementById('nav-links');
-hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
-
-const aiToggle=document.getElementById('ai-toggle');
-const aiPanel=document.getElementById('ai-panel');
-const aiClose=document.getElementById('ai-close');
-const aiMessages=document.getElementById('ai-messages');
-const aiInput=document.getElementById('ai-input');
-const aiSend=document.getElementById('ai-send');
-
-aiToggle.onclick=()=>aiPanel.style.display='flex';
-aiClose.onclick=()=>aiPanel.style.display='none';
-
-function addMsg(text,sender){
-  const div=document.createElement('div');
-  div.className=`ai-message ${sender}`;
-  div.textContent=text;
-  aiMessages.appendChild(div);
-  aiMessages.scrollTop=aiMessages.scrollHeight;
-}
-
-import { GPT4All } from "https://cdn.jsdelivr.net/npm/gpt4all/dist/gpt4all.browser.min.js";
-const gpt=new GPT4All({ model:"ggml-mpt-7b-chat.bin", path:"./models/" });
-
-aiSend.onclick=async()=>{
-  const text=aiInput.value.trim();
-  if(!text)return;
-  addMsg(text,'user');
-  aiInput.value='';
-  addMsg('...','bot');
-  const botDiv=aiMessages.querySelector('.ai-message.bot:last-child');
-  try{botDiv.textContent=await gpt.generate(text);}
-  catch(err){botDiv.textContent="AI failed to load.";console.error(err);}
-};
-aiInput.addEventListener('keypress',e=>{if(e.key==='Enter')aiSend.click();});
-
-const reveals=document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-  reveals.forEach(el=>{
-    const windowHeight=window.innerHeight;
-    const revealTop=el.getBoundingClientRect().top;
-    const revealPoint=150;
-    if(revealTop<windowHeight-revealPoint)el.classList.add('active');
-  });
-});
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 </script>
 
 </body>
