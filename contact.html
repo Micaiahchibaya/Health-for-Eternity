@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact | Health for Eternity</title>
+  <title>Contact — Health for Eternity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="logo-group">
-    <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo" loading="lazy">
     <span class="brand">Health for Eternity</span>
   </div>
+
   <nav class="nav" id="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -20,75 +22,39 @@
     <a href="articles.html">Articles</a>
     <a href="contact.html" class="active">Contact</a>
   </nav>
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+
+  <div class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
   </div>
 </header>
 
-<!-- ================= CONTACT SECTION ================= -->
-<section class="contact-section">
-  <div class="contact-container">
-    <h2>Contact Us</h2>
-    <form class="contact-form" id="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn primary">Send Message</button>
-    </form>
+<section class="hero reveal">
+  <img src="contact-banner.png" class="hero-bg" alt="Contact Banner" loading="lazy">
+  <div class="hero-content">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Reach out with questions, feedback, or support inquiries.</p>
   </div>
 </section>
-<!-- WhatsApp Channel Floating Button -->
-<a href="https://whatsapp.com/channel/0029VbCA1z27z4kk84O2Cr1c" target="_blank" id="whatsapp-btn" title="Follow Health for Eternity on WhatsApp">📢</a>
 
-<!-- ================= FOOTER ================= -->
+<section class="cta subscribe-bg reveal">
+  <form class="subscribe-form" action="https://formspree.io/f/yourformid" method="POST">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+    <button type="submit" class="btn primary">Send Message</button>
+  </form>
+</section>
+
 <footer class="footer">
   <p><strong>Health for Eternity</strong></p>
   <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
   <small>© 2026 Health for Eternity</small>
 </footer>
 
-<!-- ================= AI ASSISTANT ================= -->
-<button id="ai-toggle" title="Health Assistant">💬</button>
-<div id="ai-panel">
-  <div class="ai-header">
-    <strong>Health Assistant</strong>
-    <span id="ai-close">✕</span>
-  </div>
-  <div class="ai-messages" id="ai-messages">
-    <div class="ai-message bot">
-      Hello 👋 I’m your Health for Eternity assistant. How can I help you today?
-    </div>
-  </div>
-  <div class="ai-input">
-    <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
-    <button id="ai-send">Send</button>
-  </div>
-</div>
-
-<script>
-  // Hamburger Toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // AI Toggle
-  const aiToggle = document.getElementById('ai-toggle');
-  const aiPanel = document.getElementById('ai-panel');
-  const aiClose = document.getElementById('ai-close');
-
-  aiToggle.addEventListener('click', () => aiPanel.style.display = 'flex');
-  aiClose.addEventListener('click', () => aiPanel.style.display = 'none');
-
-  // Contact form submit
-  document.getElementById('contact-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    alert("Thank you! Your message has been sent.");
-    this.reset();
-  });
+<script type="module">
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 </script>
 
 </body>
