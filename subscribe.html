@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subscribe | Health for Eternity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Subscribe to Health for Eternity for preventive health tips, lifestyle guidance, and wellness insights.">
+  <meta name="keywords" content="subscribe, newsletter, preventive health, lifestyle medicine, wellness">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-group">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo" loading="lazy">
+    <span class="brand">Health for Eternity</span>
+  </div>
+  <nav class="nav" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="principles.html">Principles</a>
+    <a href="articles.html">Articles</a>
+    <a href="subscribe.html" class="active">Subscribe</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<section class="hero reveal">
+  <img src="banner.png" class="hero-bg" alt="Subscribe Banner" loading="lazy">
+  <div class="hero-content">
+    <h1>Stay Connected with Health for Eternity</h1>
+    <p>Subscribe to receive practical health insights, lifestyle tips, and holistic wellness guidance straight to your inbox.</p>
+  </div>
+</section>
+
+<section class="cta subscribe-bg reveal">
+  <h2>Subscribe to Our Newsletter</h2>
+  <p>Get weekly updates on nutrition, preventive health, rest, and mental clarity.</p>
+  <form class="subscribe-form" action="https://formspree.io/f/yourformid" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <button type="submit" class="btn primary">Subscribe Now</button>
+  </form>
+</section>
+
+<section class="cta support-bg reveal">
+  <h2>Support Our Mission</h2>
+  <p>Your contribution helps spread preventive health education and holistic wellness guidance.</p>
+  <a href="https://buymeacoffee.com/yourname" class="btn primary">Support</a>
+</section>
+
+<footer class="footer">
+  <p><strong>Health for Eternity</strong></p>
+  <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
+  <small>© 2026 Health for Eternity</small>
+</footer>
+
+<button id="ai-toggle" title="Health Assistant">💬</button>
+<div id="ai-panel">
+  <div class="ai-header"><strong>Health Assistant</strong><span id="ai-close">✕</span></div>
+  <div class="ai-messages" id="ai-messages"><div class="ai-message bot">Hello 👋 I’m your Health assistant. Ask me about nutrition, rest, or lifestyle.</div></div>
+  <div class="ai-input">
+    <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
+    <button id="ai-send">Send</button>
+  </div>
+</div>
+
+<script type="module">
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('nav-links');
+hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
+
+const aiToggle=document.getElementById('ai-toggle');
+const aiPanel=document.getElementById('ai-panel');
+const aiClose=document.getElementById('ai-close');
+const aiMessages=document.getElementById('ai-messages');
+const aiInput=document.getElementById('ai-input');
+const aiSend=document.getElementById('ai-send');
+
+aiToggle.onclick=()=>aiPanel.style.display='flex';
+aiClose.onclick=()=>aiPanel.style.display='none';
+
+function addMsg(text,sender){
+  const div=document.createElement('div');
+  div.className=`ai-message ${sender}`;
+  div.textContent=text;
+  aiMessages.appendChild(div);
+  aiMessages.scrollTop=aiMessages.scrollHeight;
+}
+
+import { GPT4All } from "https://cdn.jsdelivr.net/npm/gpt4all/dist/gpt4all.browser.min.js";
+const gpt=new GPT4All({ model:"ggml-mpt-7b-chat.bin", path:"./models/" });
+
+aiSend.onclick=async()=>{
+  const text=aiInput.value.trim();
+  if(!text)return;
+  addMsg(text,'user');
+  aiInput.value='';
+  addMsg('...','bot');
+  const botDiv=aiMessages.querySelector('.ai-message.bot:last-child');
+  try{botDiv.textContent=await gpt.generate(text);}
+  catch(err){botDiv.textContent="AI failed to load.";console.error(err);}
+};
+aiInput.addEventListener('keypress',e=>{if(e.key==='Enter')aiSend.click();});
+
+const reveals=document.querySelectorAll('.reveal');
+window.addEventListener('scroll',()=>{
+  reveals.forEach(el=>{
+    const windowHeight=window.innerHeight;
+    const revealTop=el.getBoundingClientRect().top;
+    const revealPoint=150;
+    if(revealTop<windowHeight-revealPoint)el.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
