@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Mission — Health for Eternity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-group">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
+    <span class="brand">Health for Eternity</span>
+  </div>
+
+  <nav class="nav" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="support.html">Support</a>
+    <a href="mission.html" class="active">Mission</a>
+  </nav>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<section class="hero reveal">
+  <img src="banner.png" class="hero-bg" alt="Mission">
+  <div class="hero-content">
+    <h1>Our Mission</h1>
+    <p>Restoring health. Preserving life. Preparing for eternity.</p>
+  </div>
+</section>
+
+<section class="cta reveal">
+  <h2>Why We Exist</h2>
+  <p>
+    Health for Eternity is dedicated to sharing practical, preventive health
+    principles rooted in lifestyle medicine, natural living, and whole-person care.
+    Our goal is to empower individuals to make informed daily choices that
+    preserve health and dignity.
+  </p>
+
+  <h3>How Your Support Helps</h3>
+  <ul class="mission-list">
+    <li>✔ Free educational articles and resources</li>
+    <li>✔ Development of the Health AI assistant</li>
+    <li>✔ Website hosting and maintenance</li>
+    <li>✔ Outreach and community education</li>
+  </ul>
+
+  <div class="mission-actions">
+    <a href="https://buymeacoffee.com/yourname" target="_blank" class="btn primary large">
+      Support the Mission
+    </a>
+  </div>
+
+  <small>
+    Health for Eternity is an educational initiative. Contributions are voluntary
+    and support ongoing educational work.
+  </small>
+</section>
+
+<footer class="footer">
+  <p><strong>Health for Eternity</strong></p>
+  <small>© 2026 Health for Eternity</small>
+</footer>
+
+<script>
+document.getElementById('hamburger').onclick =
+() => document.getElementById('nav-links').classList.toggle('active');
+</script>
+
+</body>
+</html>
