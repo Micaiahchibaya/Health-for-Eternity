@@ -2,80 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Articles | Health for Eternity</title>
+  <title>Articles — Health for Eternity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-  <button id="ai-toggle" title="Health Assistant">
-  💬
-</button>
-
-<div id="ai-panel">
-  <div class="ai-header">
-    <strong>Health Assistant</strong>
-    <span id="ai-close">✕</span>
-  </div>
-
-  <div class="ai-messages" id="ai-messages">
-    <div class="ai-message bot">
-      Hello 👋  
-      I’m your Health for Eternity assistant.  
-      How can I help you today?
-    </div>
-  </div>
-
-  <div class="ai-input">
-    <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
-    <button id="ai-send">Send</button>
-  </div>
-</div>
-
 <body>
 
 <header class="header">
   <div class="logo-group">
-    <img src="logo.svg" class="logo">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo" loading="lazy">
     <span class="brand">Health for Eternity</span>
   </div>
+
+  <nav class="nav" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="principles.html">Principles</a>
+    <a href="articles.html" class="active">Articles</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
 </header>
-<section class="features" style="padding-bottom:30px;">
-  <input
-    id="search-input"
-    type="text"
-    placeholder="Search articles..."
-    style="
-      width:100%;
-      max-width:400px;
-      padding:14px 20px;
-      border-radius:30px;
-      border:1px solid #ccc;
-      margin:auto;
-      display:block;
-    "
-  >
+
+<section class="hero reveal">
+  <img src="banner.png" class="hero-bg" alt="Articles Banner" loading="lazy">
+  <div class="hero-content">
+    <h1>Health Articles</h1>
+    <p>Explore evidence-based tips, guides, and lifestyle advice for better living.</p>
+  </div>
 </section>
 
-<section class="features" id="articles-container">
-  <!-- Articles load here -->
+<section class="features reveal">
+  <div class="feature-card">
+    <h3>Nutrition</h3>
+    <p>Practical tips for balanced, whole-food diets.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Exercise</h3>
+    <p>Workouts and activity routines for all levels.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Mind & Spirit</h3>
+    <p>Wellness techniques for mental clarity and spiritual growth.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Sleep & Rest</h3>
+    <p>Strategies for better sleep and recovery.</p>
+  </div>
 </section>
-<section id="articles"></section>
 
-<script>
-fetch('articles.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('articles');
-    data.forEach(a => {
-      container.innerHTML += `
-        <article class="article-card">
-          <h3>${a.title}</h3>
-          <p>${a.excerpt}</p>
-          <small>${a.date}</small>
-        </article>`;
-    });
-  });
+<footer class="footer">
+  <p><strong>Health for Eternity</strong></p>
+  <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
+  <small>© 2026 Health for Eternity</small>
+</footer>
+
+<script type="module">
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 </script>
 
-<script src="app.js"></script>
 </body>
 </html>
-
