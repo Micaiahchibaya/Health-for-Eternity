@@ -98,15 +98,20 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(70%);
+  filter: brightness(65%);
+  transition: transform 0.5s ease;
+}
+
+.hero-bg:hover {
+  transform: scale(1.05);
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
-  z-index: 1; /* Make sure overlay is below content */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.55));
+  z-index: 1;
 }
 
 .hero-content {
@@ -118,18 +123,23 @@ body {
   text-align: center;
   padding: 0 20px;
   animation: fadeUp 1.2s ease;
-  z-index: 2; /* Bring content above overlay */
+  z-index: 2;
+  max-width: 90%;
+  backdrop-filter: blur(2px);
 }
 
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 20px;
+  font-weight: 800;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.45);
 }
 
 .hero-content p {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto 30px auto;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
 /* ================= HERO BUTTONS ================= */
@@ -137,16 +147,38 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  z-index: 2; /* Make sure buttons are clickable */
+  gap: 20px;
   position: relative;
+  z-index: 2;
 }
 
+.hero-buttons .btn {
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Primary button */
 .hero-buttons .btn.primary {
-  background: #2e8b57;
+  background: linear-gradient(135deg, #2e8b57, #3cb371);
   color: white;
 }
 
+.hero-buttons .btn.primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  background: linear-gradient(135deg, #3cb371, #2e8b57);
+}
+
+/* Outline button */
 .hero-buttons .btn.outline {
   background: transparent;
   border: 2px solid white;
@@ -156,7 +188,26 @@ body {
 .hero-buttons .btn.outline:hover {
   background: white;
   color: #2e8b57;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
 }
+
+/* Button micro-interaction ripple effect */
+.hero-buttons .btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.25) 10%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: scale(0);
+}
+
+.hero-buttons .btn:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* ================= FEATURES ================= */
 .features {
   display: grid;
@@ -236,16 +287,20 @@ body {
 
 .subscribe-form button {
   padding: 14px 28px;
-  border-radius: 30px;
+  border-radius: 50px;
   border: none;
-  background: #2e8b57;
+  background: linear-gradient(135deg, #2e8b57, #3cb371);
   color: white;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .subscribe-form button:hover {
-  background: #246b45;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, #3cb371, #2e8b57);
 }
+
 #whatsapp-btn {
   position: fixed;
   bottom: 25px;
@@ -339,17 +394,19 @@ body {
   flex: 1 1 100%;
   padding: 15px;
   border: none;
-  border-radius: 30px;
-  background: #2e8b57;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #2e8b57, #3cb371);
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .contact-form button:hover {
-  background: #246b45;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: linear-gradient(135deg, #3cb371, #2e8b57);
 }
 
 /* ================= AI ASSISTANT ================= */
@@ -504,6 +561,7 @@ body {
     width: 100%;
   }
 }
+
 /* ================= MODERN COLOR ENHANCEMENTS ================= */
 :root {
   --primary: #2e8b57;
@@ -523,18 +581,6 @@ body::before {
   z-index: -1;
 }
 
-/* ================= HERO POLISH ================= */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
-}
-
-.hero-content {
-  backdrop-filter: blur(2px);
-}
-
 /* ================= BUTTON MICRO-INTERACTIONS ================= */
 .btn {
   position: relative;
@@ -547,11 +593,13 @@ body::before {
   inset: 0;
   background: radial-gradient(circle at center, rgba(255,255,255,0.25), transparent 60%);
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: scale(0);
 }
 
 .btn:hover::after {
   opacity: 1;
+  transform: scale(1);
 }
 
 /* ================= FEATURE ICON GLOW ================= */
@@ -575,26 +623,6 @@ section {
   }
 }
 
-/* ================= SOCIAL MEDIA ICON BAR ================= */
-.social-bar {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  margin: 40px 0 0;
-}
-
-.social-bar a {
-  width: 48px;
-  height: 48px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0
-/* ================= TESTIMONIALS ================= */
-.testimonials {
-  padding: 80px 
 /* ================= SCROLL ANIMATIONS ================= */
 .reveal {
   opacity: 0;
@@ -606,6 +634,7 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
 /* ================= DARK MODE ================= */
 body.dark {
   background: #0f172a;
