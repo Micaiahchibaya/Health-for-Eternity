@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Support — Health for Eternity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-group">
+    <img src="logo.svg" class="logo" alt="Health for Eternity Logo">
+    <span class="brand">Health for Eternity</span>
+  </div>
+
+  <nav class="nav" id="nav-links">
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="ai.html">AI</a>
+    <a href="support.html" class="active">Support</a>
+  </nav>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero reveal">
+  <img src="banner.png" class="hero-bg" alt="Support">
+  <div class="hero-content">
+    <h1>Support Center</h1>
+    <p>We’re here to help you every step of your wellness journey.</p>
+  </div>
+</section>
+
+<!-- ================= SUPPORT OPTIONS ================= -->
+<section class="cta reveal">
+  <h2>How can we help?</h2>
+
+  <div class="support-grid">
+
+    <div class="support-card">
+      <h3>🤖 AI Help</h3>
+      <p>Get instant answers to wellness and lifestyle questions.</p>
+      <a href="ai.html" class="btn primary">Ask AI</a>
+    </div>
+
+    <div class="support-card">
+      <h3>📧 Email Support</h3>
+      <p>Reach our team directly for guidance or feedback.</p>
+      <p><strong>support@healthforeternity.org</strong></p>
+    </div>
+
+    <div class="support-card">
+      <h3>💬 Contact Form</h3>
+      <p>Send us a message and we’ll get back to you.</p>
+      <a href="contact.html" class="btn outline">Contact Us</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="cta light reveal">
+  <h2>Frequently Asked Questions</h2>
+
+  <details>
+    <summary>Is the AI a doctor?</summary>
+    <p>No. The AI provides educational lifestyle guidance, not medical diagnosis.</p>
+  </details>
+
+  <details>
+    <summary>How fast do you reply to messages?</summary>
+    <p>Usually within 24–48 hours.</p>
+  </details>
+
+  <details>
+    <summary>Is Health for Eternity free?</summary>
+    <p>Yes. Educational content is freely available.</p>
+  </details>
+</section>
+
+<footer class="footer">
+  <p><strong>Health for Eternity</strong></p>
+  <small>© 2026 Health for Eternity</small>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav-links');
+hamburger.onclick = () => nav.classList.toggle('active');
+</script>
+
+</body>
+</html>
