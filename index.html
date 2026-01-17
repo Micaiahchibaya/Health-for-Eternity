@@ -4,56 +4,32 @@
   <meta charset="UTF-8">
   <title>Health for Eternity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO -->
   <meta name="description" content="Health for Eternity promotes preventive health, lifestyle medicine, natural living, and whole-person wellness.">
   <meta name="keywords" content="lifestyle medicine, preventive health, wellness, natural health">
   <meta name="author" content="Health for Eternity">
-  <link rel="canonical" href="https://yourdomain.com/">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Health for Eternity">
-  <meta property="og:description" content="Restoring health. Preserving life. Preparing for eternity.">
-  <meta property="og:image" content="banner.png">
-  <meta property="og:type" content="website">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header class="header">
   <div class="logo-group">
     <img src="logo.svg" class="logo" alt="Health for Eternity Logo" loading="lazy">
     <span class="brand">Health for Eternity</span>
   </div>
-
   <nav class="nav" id="nav-links">
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="about.html">About</a>
     <a href="principles.html">Principles</a>
     <a href="articles.html">Articles</a>
     <a href="contact.html">Contact</a>
   </nav>
-
-  <div class="hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </header>
 
-<!-- ================= LANGUAGE SWITCH ================= -->
-<select id="lang-switch">
-  <option value="en">EN</option>
-  <option value="sn">SN</option>
-</select>
-
-<!-- ================= HERO ================= -->
 <section class="hero reveal">
-  <img src="banner.png" class="hero-bg" alt="Banner" loading="lazy">
+  <img src="banner.png" class="hero-bg" alt="Wellness Banner" loading="lazy">
   <div class="hero-content">
     <h1>Wellness That Lasts</h1>
     <p>Restoring health. Preserving life. Preparing for eternity through lifestyle medicine.</p>
@@ -64,34 +40,32 @@
   </div>
 </section>
 
-<!-- ================= FEATURES ================= -->
 <section class="features reveal">
   <div class="feature-card">
-    <img src="icons/leaf.png" alt="Natural Living" loading="lazy">
+    <img src="icons/leaf.png" alt="Natural Living">
     <h3>Natural Living</h3>
     <p>Evidence-based nutrition and nature-aligned habits.</p>
   </div>
   <div class="feature-card">
-    <img src="icons/heart.png" alt="Preventive Care" loading="lazy">
+    <img src="icons/heart.png" alt="Preventive Care">
     <h3>Preventive Care</h3>
     <p>Health before disease through daily choices.</p>
   </div>
   <div class="feature-card">
-    <img src="icons/brain.png" alt="Mental Wellness" loading="lazy">
+    <img src="icons/brain.png" alt="Mental Wellness">
     <h3>Mental Wellness</h3>
     <p>Emotional balance, rest, and spiritual clarity.</p>
   </div>
   <div class="feature-card">
-    <img src="icons/sun.png" alt="Whole Person Health" loading="lazy">
+    <img src="icons/sun.png" alt="Whole Person Health">
     <h3>Whole-Person Health</h3>
     <p>Physical, mental, and spiritual harmony.</p>
   </div>
 </section>
 
-<!-- ================= CTA ================= -->
-<section class="cta primary-bg reveal">
+<section class="cta reveal primary-bg">
   <h2>Begin Your Journey to Lasting Health</h2>
-  <a href="articles.html" class="btn">Start Today</a>
+  <a href="articles.html" class="btn primary large">Start Today</a>
 </section>
 
 <section class="cta subscribe-bg reveal">
@@ -99,119 +73,88 @@
   <p>Receive practical health insights and lifestyle guidance.</p>
   <form class="subscribe-form" action="https://formspree.io/f/yourformid" method="POST">
     <input type="email" name="email" placeholder="Your email" required>
-    <button type="submit">Subscribe</button>
+    <button type="submit" class="btn primary">Subscribe</button>
   </form>
 </section>
 
 <section class="cta support-bg reveal">
   <h2>Support the Mission</h2>
   <p>Your support helps spread preventive health education.</p>
-  <a href="https://buymeacoffee.com/yourname" class="btn">Support</a>
+  <a href="https://buymeacoffee.com/yourname" class="btn primary">Support</a>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p><strong>Health for Eternity</strong></p>
   <p>Preventive health • Lifestyle medicine • Whole-person wellness</p>
   <small>© 2026 Health for Eternity</small>
 </footer>
 
-<!-- ================= AI ASSISTANT ================= -->
-<button id="ai-toggle" aria-label="Open Health Assistant" title="Health Assistant">💬</button>
-
+<button id="ai-toggle" title="Health Assistant">💬</button>
 <div id="ai-panel">
   <div class="ai-header">
     <strong>Health Assistant</strong>
-    <span id="ai-close" aria-label="Close assistant">✕</span>
+    <span id="ai-close">✕</span>
   </div>
-
   <div class="ai-messages" id="ai-messages">
-    <div class="ai-message bot">
-      Hello 👋 I’m your Health for Eternity assistant. Ask me about nutrition, rest, or lifestyle.
-    </div>
+    <div class="ai-message bot">Hello 👋 I’m your Health for Eternity assistant. Ask me about nutrition, rest, or lifestyle.</div>
   </div>
-
   <div class="ai-input">
     <input id="ai-input" placeholder="Ask about nutrition, rest, lifestyle…">
     <button id="ai-send">Send</button>
   </div>
 </div>
 
-<p class="ai-disclaimer">
-  ⚠️ Educational only. Not a substitute for medical care.
-</p>
-
-<!-- ================= SCRIPTS ================= -->
 <script type="module">
-/* ================= HAMBURGER MENU ================= */
+// Hamburger Menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-/* ================= LANGUAGE SWITCH ================= */
-fetch('lang.json')
-  .then(res => res.json())
-  .then(lang => {
-    const select = document.getElementById('lang-switch');
-    select.onchange = () => {
-      const l = lang[select.value];
-      document.querySelector('.hero h1').textContent = l.heroTitle;
-      document.querySelector('.hero p').textContent = l.heroText;
-    };
-  });
+// AI Panel
+const aiToggle = document.getElementById('ai-toggle');
+const aiPanel = document.getElementById('ai-panel');
+const aiClose = document.getElementById('ai-close');
+const aiMessages = document.getElementById('ai-messages');
+const aiInput = document.getElementById('ai-input');
+const aiSend = document.getElementById('ai-send');
 
-/* ================= AI PANEL TOGGLE ================= */
-const aiToggleBtn = document.getElementById('ai-toggle');
-const aiPanelDiv = document.getElementById('ai-panel');
-const aiCloseBtn = document.getElementById('ai-close');
-const aiMessagesDiv = document.getElementById('ai-messages');
-const aiInputEl = document.getElementById('ai-input');
-const aiSendBtn = document.getElementById('ai-send');
+aiToggle.onclick = () => aiPanel.style.display = 'flex';
+aiClose.onclick = () => aiPanel.style.display = 'none';
 
-aiToggleBtn.onclick = () => aiPanelDiv.style.display = 'flex';
-aiCloseBtn.onclick = () => aiPanelDiv.style.display = 'none';
-
-/* ================= HELPER FUNCTION ================= */
-function addMsg(text, sender){
+function addMsg(text, sender) {
   const div = document.createElement('div');
   div.className = `ai-message ${sender}`;
   div.textContent = text;
-  aiMessagesDiv.appendChild(div);
-  aiMessagesDiv.scrollTop = aiMessagesDiv.scrollHeight;
+  aiMessages.appendChild(div);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
 }
 
-/* ================= OPENAI BACKEND INTEGRATION ================= */
-async function sendToAI(message) {
-  try {
-    const res = await fetch("https://your-vercel-serverless-endpoint.vercel.app/api/chat", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ message, history: [] })
-    });
-    const data = await res.json();
-    return data.reply || "AI did not respond.";
-  } catch(err){
-    console.error(err);
-    return "AI request failed.";
-  }
-}
+import { GPT4All } from "https://cdn.jsdelivr.net/npm/gpt4all/dist/gpt4all.browser.min.js";
+const gpt = new GPT4All({ model: "ggml-mpt-7b-chat.bin", path: "./models/" });
 
-/* ================= AI SEND LOGIC ================= */
-aiSendBtn.onclick = async () => {
-  const text = aiInputEl.value.trim();
+aiSend.onclick = async () => {
+  const text = aiInput.value.trim();
   if(!text) return;
-  addMsg(text,'user');
-  aiInputEl.value = '';
+  addMsg(text, 'user');
+  aiInput.value = '';
   addMsg('...', 'bot');
-  const botDiv = aiMessagesDiv.querySelector('.ai-message.bot:last-child');
-  const reply = await sendToAI(text);
-  botDiv.textContent = reply;
+  const botDiv = aiMessages.querySelector('.ai-message.bot:last-child');
+  try { botDiv.textContent = await gpt.generate(text); } 
+  catch(err) { botDiv.textContent = "AI failed to load."; console.error(err); }
 };
 
-aiInputEl.addEventListener('keypress', e => {
-  if(e.key==='Enter') aiSendBtn.click();
+aiInput.addEventListener('keypress', e => { if(e.key==='Enter') aiSend.click(); });
+
+// Reveal Animations
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const revealTop = el.getBoundingClientRect().top;
+    const revealPoint = 150;
+    if(revealTop < windowHeight - revealPoint) el.classList.add('active');
+  });
 });
 </script>
-
 </body>
 </html>
