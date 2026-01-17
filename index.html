@@ -62,6 +62,17 @@
     </div>
   </div>
 </section>
+/* ================= LANGUAGE ================= */
+fetch('lang.json')
+  .then(res => res.json())
+  .then(lang => {
+    const select = document.getElementById('lang-switch');
+    select.onchange = () => {
+      const l = lang[select.value];
+      document.querySelector('.hero h1').textContent = l.heroTitle;
+      document.querySelector('.hero p').textContent = l.heroText;
+    };
+  });
 
 <!-- ================= FEATURES ================= -->
 <section class="features reveal">
@@ -123,6 +134,11 @@
     <input type="email" name="email" placeholder="Your email" required>
     <button type="submit">Subscribe</button>
   </form>
+</section>
+<section class="cta support">
+  <h2>Support the Mission</h2>
+  <p>Your support helps spread preventive health education.</p>
+  <a href="https://buymeacoffee.com/yourname" class="btn primary">Support</a>
 </section>
 
 <!-- ================= FOOTER ================= -->
