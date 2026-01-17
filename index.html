@@ -178,6 +178,89 @@ fetch('lang.json')
     <button id="ai-send">Send</button>
   </div>
 </div>
+<script>
+/* Hamburger Menu */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+/* Language Switch */
+fetch('lang.json')
+  .then(res => res.json())
+  .then(lang => {
+    const select = document.getElementById('lang-switch');
+    select.onchange = () => {
+      const l = lang[select.value];
+      document.querySelector('.hero h1').textContent = l.heroTitle;
+      document.querySelector('.hero p').textContent = l.heroText;
+    };
+  });
+
+/* ================= AI PANEL ================= */
+const aiToggle = document.getElementById('ai-toggle');
+const aiPanel = document.getElementById('ai-panel');
+const aiClose = document.getElementById('ai-close');
+const aiMessages = document.getElementById('ai-messages');
+const aiInput = document.getElementById('ai-input');
+const aiSend = document.getElementById('ai-send');
+
+aiToggle.onclick = () => aiPanel.style.display = 'flex';
+aiClose.onclick = () => aiPanel.style.display = 'none';
+
+/* Helper to add messages */
+function addMsg(text, sender){
+  const div = document.createElement('div');
+  div.className = `ai-message ${sender}`;
+  div.textContent = text;
+  aiMessages.appendChild(div);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+
+/* ================= SIMPLE OPENAI API INTEGRATION ================= */
+// Replace this with your own OpenAI API key
+const OPENAI_KEY = "YOUR_OPENAI_API_KEY";
+
+async function getAIResponse(prompt){
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${OPENAI_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    const data = await res.json();
+    return data.choices[0].message.content;
+  } catch(err) {
+    console.error(err);
+    return "Sorry, the AI is unavailable right now. Please try again later.";
+  }
+}
+
+/* Send AI message */
+aiSend.onclick = async () => {
+  const text = aiInput.value.trim();
+  if(!text) return;
+  addMsg(text, 'user');
+  aiInput.value = '';
+
+  // Show a typing placeholder
+  addMsg('...', 'bot');
+
+  const botDiv = aiMessages.querySelector('.ai-message.bot:last-child');
+  const reply = await getAIResponse(text);
+
+  botDiv.textContent = reply;
+};
+
+aiInput.addEventListener('keypress', (e) => {
+  if(e.key === 'Enter') aiSend.click();
+});
+</script>
 
 <p class="ai-disclaimer">
   ⚠️ Educational only. Not a substitute for medical care.
