@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Health for Eternity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#1e90ff;
+      --secondary:#00cfff;
+      --glass:rgba(255,255,255,0.15);
+      --dark:#0f172a;
+      --light:#f8fafc;
+    }
+
+    body{
+      font-family:'DM Sans',sans-serif;
+      margin:0;
+      background:
+        linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+        url("https://images.unsplash.com/photo-1588776814546-1b4c3d82ed05?auto=format&fit=crop&w=1920&q=80");
+      background-size:cover;
+      background-attachment:fixed;
+      color:white;
+    }
+
+    .login-container,
+    .admin-sidebar,
+    .admin-header,
+    .dashboard-card,
+    .analytics-card,
+    .settings-section,
+    .modal-content{
+      background:var(--glass);
+      backdrop-filter:blur(15px);
+      border-radius:18px;
+      box-shadow:0 10px 40px rgba(0,0,0,.4);
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      border:none;
+      color:white;
+      padding:12px 22px;
+      border-radius:50px;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .btn-primary:hover{
+      transform:scale(1.05);
+      box-shadow:0 10px 25px rgba(30,144,255,.5);
+    }
+
+    .btn-outline{
+      background:transparent;
+      border:2px solid white;
+      color:white;
+      padding:10px 20px;
+      border-radius:50px;
+    }
+
+    input,select,textarea{
+      width:100%;
+      padding:10px;
+      border-radius:10px;
+      border:none;
+      outline:none;
+      background:rgba(255,255,255,.2);
+      color:white;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:rgba(255,255,255,.1);
+      border-radius:12px;
+      overflow:hidden;
+    }
+
+    th,td{
+      padding:12px;
+      border-bottom:1px solid rgba(255,255,255,.15);
+    }
+
+    th{
+      background:rgba(30,144,255,.25);
+    }
+
+    .admin-sidebar{
+      width:250px;
+      height:100vh;
+      position:fixed;
+      padding:20px;
+    }
+
+    .sidebar-link{
+      display:block;
+      padding:12px;
+      border-radius:10px;
+      color:white;
+      text-decoration:none;
+      margin-bottom:8px;
+      transition:.3s;
+    }
+
+    .sidebar-link:hover,
+    .sidebar-link.active{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+    }
+
+    .admin-main{
+      margin-left:270px;
+      padding:30px;
+    }
+
+    .stat-box{
+      background:rgba(255,255,255,.15);
+      padding:20px;
+      border-radius:15px;
+      display:flex;
+      gap:15px;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+
+    .dashboard-grid,
+    .analytics-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .modal{
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      background:rgba(0,0,0,.6);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+  </style>
+</head>
+
+<body class="admin-body">
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div id="login-screen" class="login-screen">
+  <div class="login-container">
+    <div class="login-header" style="text-align:center;">
+      <div class="logo-icon">🌿</div>
+      <h1>Admin Login</h1>
+      <p>Health for Eternity</p>
+    </div>
+
+    <form id="login-form" class="login-form">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="username" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" required>
+      </div>
+
+      <button type="submit" class="btn-primary">Login</button>
+      <div id="login-error" style="display:none;color:#ffaaaa;">Invalid credentials</div>
+    </form>
+
+    <div style="margin-top:15px;text-align:center;">
+      <a href="index.html" style="color:#9fdcff;">← Back to Site</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+<div id="admin-dashboard" class="admin-dashboard" style="display:none;">
+
+  <aside class="admin-sidebar">
+    <h2>🌿 Health Admin</h2>
+    <nav>
+      <a href="#dashboard" class="sidebar-link active" data-tab="dashboard">📊 Dashboard</a>
+      <a href="#articles" class="sidebar-link" data-tab="articles">📝 Articles</a>
+      <a href="#subscribers" class="sidebar-link" data-tab="subscribers">👥 Subscribers</a>
+      <a href="#analytics" class="sidebar-link" data-tab="analytics">📈 Analytics</a>
+      <a href="#settings" class="sidebar-link" data-tab="settings">⚙ Settings</a>
+    </nav>
+    <button id="logout-btn" class="btn-outline">Logout</button>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1 id="page-title">Dashboard</h1>
+    </header>
+
+    <div id="tab-dashboard" class="tab-content active">
+      <div class="dashboard-grid">
+        <div class="stat-box">📝 Articles</div>
+        <div class="stat-box">👥 Subscribers</div>
+        <div class="stat-box">👁 Views</div>
+        <div class="stat-box">⭐ Rating</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
